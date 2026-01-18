@@ -11,6 +11,7 @@
     "test:coverage": "jest --coverage",
     "migrate": "node dist/database/migrate.js",
     "migrate:down": "node dist/database/migrate.js down",
+    "example": "ts-node src/example.ts",
     "dev": "ts-node src/index.ts",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write \"src/**/*.ts\""

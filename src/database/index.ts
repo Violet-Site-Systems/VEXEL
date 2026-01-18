@@ -1,3 +1,3 @@
-export { db, DatabaseClient } from './database/client';
-export { AgentRepository } from './database/repository';
-export { MigrationRunner } from './database/migrate';
+export { db, DatabaseClient } from './client';
+export { AgentRepository } from './repository';
+export { MigrationRunner } from './migrate';
