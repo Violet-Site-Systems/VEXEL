@@ -7,7 +7,7 @@
         { "indexed": false, "name": "did", "type": "string" },
         { "indexed": false, "name": "name", "type": "string" },
         { "indexed": false, "name": "description", "type": "string" },
-        { "indexed": false, "name": "ipfsHash", "type": "string" }
+        { "indexed": true, "name": "ipfsHash", "type": "string" }
       ],
       "name": "AgentRegistered",
       "type": "event"

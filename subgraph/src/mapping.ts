@@ -1,4 +1,4 @@
-import { BigInt, Bytes } from "@graphprotocol/graph-ts"
+import { BigInt, Bytes, log } from "@graphprotocol/graph-ts"
 import {
   AgentRegistered,
   AgentUpdated,
@@ -117,5 +117,7 @@ function getStatusString(status: i32): string {
   } else if (status == 2) {
     return "TERMINATED"
   }
+  // Log warning for unexpected status
+  log.warning("Unexpected status value: {}", [status.toString()])
   return "ACTIVE"
 }

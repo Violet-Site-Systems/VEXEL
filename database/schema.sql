@@ -2,7 +2,7 @@
 -- Phase 1.2: Agent Metadata and State Management
 -- Version: 1.0.0
 
--- Enable UUID extension
+-- Enable UUID extension (PostgreSQL 13+ has gen_random_uuid() built-in)
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Runtime Status Enum
@@ -10,7 +10,7 @@ CREATE TYPE runtime_status AS ENUM ('ACTIVE', 'SLEEP', 'TERMINATED');
 
 -- Agent Metadata Table
 CREATE TABLE agents (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     did VARCHAR(255) UNIQUE NOT NULL,
     name VARCHAR(255) NOT NULL,
     description TEXT,
@@ -33,7 +33,7 @@ CREATE INDEX idx_agents_created_at ON agents(created_at);
 
 -- Capability Vectors Table
 CREATE TABLE capability_vectors (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     agent_id UUID NOT NULL REFERENCES agents(id) ON DELETE CASCADE,
     capability_name VARCHAR(255) NOT NULL,
     capability_value JSONB NOT NULL,
@@ -52,7 +52,7 @@ CREATE INDEX idx_capability_vectors_value ON capability_vectors USING GIN (capab
 
 -- Agent Status History Table (for tracking status changes)
 CREATE TABLE agent_status_history (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     agent_id UUID NOT NULL REFERENCES agents(id) ON DELETE CASCADE,
     previous_status runtime_status,
     new_status runtime_status NOT NULL,
@@ -67,7 +67,7 @@ CREATE INDEX idx_agent_status_history_changed_at ON agent_status_history(changed
 
 -- IPFS Metadata Cache Table
 CREATE TABLE ipfs_metadata (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     agent_id UUID NOT NULL REFERENCES agents(id) ON DELETE CASCADE,
     ipfs_hash VARCHAR(64) UNIQUE NOT NULL,
     metadata JSONB NOT NULL,

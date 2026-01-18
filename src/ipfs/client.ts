@@ -1,4 +1,5 @@
 import { create, IPFSHTTPClient } from 'kubo-rpc-client';
+import { createHash } from 'crypto';
 import * as dotenv from 'dotenv';
 import { AgentMetadata } from '../types';
 
@@ -105,9 +106,8 @@ export class IPFSClient {
    * Useful for verification purposes
    */
   static computeHash(metadata: AgentMetadata): string {
-    const crypto = require('crypto');
     const jsonString = JSON.stringify(metadata);
-    const hash = crypto.createHash('sha256').update(jsonString).digest('hex');
+    const hash = createHash('sha256').update(jsonString).digest('hex');
     return hash;
   }
 }

@@ -42,7 +42,6 @@
   },
   "dependencies": {
     "dotenv": "^16.3.1",
-    "ipfs-http-client": "^60.0.1",
     "kubo-rpc-client": "^3.0.2",
     "pg": "^8.11.3"
   }
