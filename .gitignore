@@ -7,3 +7,5 @@ coverage/
 *.key
 *.pem
 wallets/
+demo-wallets/
+test-wallets*/

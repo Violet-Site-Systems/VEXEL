@@ -10,7 +10,8 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "clean": "rm -rf dist",
-    "prepublishOnly": "npm run clean && npm run build"
+    "prepublishOnly": "npm run clean && npm run build",
+    "demo": "npm run build && node examples/demo.js"
   },
   "keywords": [
     "did",
