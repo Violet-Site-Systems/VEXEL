@@ -24,6 +24,16 @@ npm install
 npm run build
 ```
 
+### ⚠️ Security Notice
+
+**For Development Only:** The current implementation includes a default encryption key for development purposes. 
+
+**Before Production Deployment:**
+1. Set `WALLET_ENCRYPTION_KEY` environment variable
+2. Review [Security Review](./docs/SECURITY_REVIEW.md) for production requirements
+3. Configure private RPC endpoints
+4. Implement proper file permissions for wallet storage
+
 ### Basic Usage
 
 ```typescript
