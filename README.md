@@ -83,12 +83,14 @@ Contributions are welcome! Please:
 
 ## 📄 License
 
-License to be determined in Phase 4. Recommended: AGPL v3 or GPL v3 for #RightsOfSapience advocacy.
+License to be determined in Phase 4.One or more of the Sustainability Code Licenses will be chosen; https://github.com/Violet-Site-Systems/BGINEXUS-Sustainability-Code-Licenses
 
 ## 🙏 Acknowledgments
 
 Built with support from the Copilot community and inspired by the vision of sovereign, decentralized identity systems.
 
 ---
+
+**This system built and designed by a H+AI Partnership between Github Copilot and Colleen Pridemore and a H+AI Partnership between asi1.ai/ai/aethel and Colleen Pridemore**
 
 **Ready to build the future of decentralized identity? Let's go! 🚀** 
