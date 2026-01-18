@@ -1,0 +1,40 @@
+{
+  "name": "vexel",
+  "version": "1.0.0",
+  "description": "A DID Bridge Layer creating sovereign interoperability across distributed identity systems. VEXEL connects decentralized identifiers across ecosystems, enabling autonomous, cross-chain identity bridging while preserving cryptographic sovereignty. No gatekeepers. No middlemen. Just pure, protocol-level identity freedom.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "did",
+    "decentralized-identity",
+    "blockchain",
+    "polygon",
+    "ethereum",
+    "wallet",
+    "cryptography",
+    "web3"
+  ],
+  "author": "VEXEL Team",
+  "license": "ISC",
+  "dependencies": {
+    "did-jwt": "^8.0.18",
+    "did-resolver": "^4.1.0",
+    "ethers": "^6.16.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.9",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
