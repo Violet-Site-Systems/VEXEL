@@ -145,14 +145,27 @@ export class WalletManager {
 
   /**
    * Generates a deterministic password for wallet encryption
-   * In production, this should use a secure key management system
+   * In production, this REQUIRES a secure key management system
    * @param agentId - Unique identifier for the agent
    * @returns Password for wallet encryption
    */
   private getWalletPassword(agentId: string): string {
-    // In production, use environment variables or secure key management
-    // This is a simplified implementation for demonstration
-    const basePassword = process.env.WALLET_ENCRYPTION_KEY || 'vexel-secure-key';
+    const basePassword = process.env.WALLET_ENCRYPTION_KEY;
+    
+    // In production, fail if encryption key is not set
+    if (!basePassword) {
+      // Only use default in development/testing
+      if (process.env.NODE_ENV === 'production') {
+        throw new Error(
+          'WALLET_ENCRYPTION_KEY environment variable must be set in production. ' +
+          'See docs/SECURITY_REVIEW.md for security requirements.'
+        );
+      }
+      // Development-only default
+      console.warn('⚠️  WARNING: Using default encryption key. Set WALLET_ENCRYPTION_KEY for production.');
+      return `vexel-dev-key-${agentId}`;
+    }
+    
     return `${basePassword}-${agentId}`;
   }
 

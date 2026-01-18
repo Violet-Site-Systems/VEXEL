@@ -33,9 +33,23 @@ export class BadgeMinter {
 
   constructor(walletManager: WalletManager, contractAddress?: string) {
     this.walletManager = walletManager;
-    // Use a placeholder contract address for now
-    // In production, this would be the deployed smart contract address
-    this.contractAddress = contractAddress || '0x0000000000000000000000000000000000000000';
+    
+    // In production, contract address must be set after deployment
+    // Using placeholder for development/testing only
+    if (!contractAddress) {
+      if (process.env.NODE_ENV === 'production') {
+        throw new Error(
+          'Badge contract address must be provided in production. ' +
+          'Deploy the VERIFIED_HUMAN badge contract first, then call ' +
+          'badgeMinter.setContractAddress(address).'
+        );
+      }
+      // Development placeholder
+      console.warn('⚠️  Using placeholder contract address. Badge minting will be simulated.');
+      this.contractAddress = '0x0000000000000000000000000000000000000000';
+    } else {
+      this.contractAddress = contractAddress;
+    }
     
     // Simplified ERC-721 ABI for badge minting
     this.contractABI = [
