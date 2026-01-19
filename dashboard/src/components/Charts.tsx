@@ -112,8 +112,7 @@ export function AgentActivityChart({ agents }: AgentActivityChartProps) {
         const heartbeat = new Date(agent.lastHeartbeat);
         return (
           heartbeat >= hour &&
-          heartbeat < new Date(hour.getTime() + 60 * 60 * 1000) &&
-          agent.status === 'active'
+          heartbeat < new Date(hour.getTime() + 60 * 60 * 1000)
         );
       }).length;
     });
@@ -124,7 +123,7 @@ export function AgentActivityChart({ agents }: AgentActivityChartProps) {
         labels: hours.map((h) => h.getHours() + ':00'),
         datasets: [
           {
-            label: 'Active Agents',
+            label: 'Agents with Heartbeats',
             data: activityData,
             borderColor: 'rgb(14, 165, 233)',
             backgroundColor: 'rgba(14, 165, 233, 0.1)',
@@ -142,7 +141,7 @@ export function AgentActivityChart({ agents }: AgentActivityChartProps) {
           },
           title: {
             display: true,
-            text: 'Agent Activity (Last 24 Hours)',
+            text: 'Agent Heartbeat Activity (Last 24 Hours)',
             color: 'rgba(255, 255, 255, 0.87)',
             font: {
               size: 16,

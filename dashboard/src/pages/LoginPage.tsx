@@ -51,6 +51,8 @@ export function LoginPage() {
                 onChange={(e) => setUserId(e.target.value)}
                 className="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 placeholder="Enter your user ID"
+                autoComplete="username"
+                aria-describedby={error ? 'login-error' : undefined}
                 required
               />
             </div>
@@ -64,6 +66,8 @@ export function LoginPage() {
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 className="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                autoComplete="organization-title"
+                aria-describedby={error ? 'login-error' : undefined}
               >
                 <option value="human">Human</option>
                 <option value="agent">Agent</option>
@@ -72,7 +76,11 @@ export function LoginPage() {
             </div>
 
             {error && (
-              <div className="p-3 bg-red-500/20 border border-red-500 rounded-lg text-red-500 text-sm">
+              <div 
+                id="login-error"
+                className="p-3 bg-red-500/20 border border-red-500 rounded-lg text-red-500 text-sm"
+                role="alert"
+              >
                 {error}
               </div>
             )}
