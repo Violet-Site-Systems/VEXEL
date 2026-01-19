@@ -1,0 +1,169 @@
+syntax = "proto3";
+
+package vexel.agent;
+
+// Agent discovery and registration service
+service AgentDiscovery {
+  // Register agent with discovery service
+  rpc RegisterAgent(AgentRegistration) returns (RegistrationResponse);
+  
+  // Discover agents by criteria
+  rpc DiscoverAgents(DiscoveryRequest) returns (DiscoveryResponse);
+  
+  // Heartbeat to maintain agent presence
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+  
+  // Unregister agent from discovery service
+  rpc UnregisterAgent(UnregistrationRequest) returns (UnregistrationResponse);
+}
+
+// Agent-to-agent communication service
+service AgentCommunication {
+  // Initiate handshake with another agent
+  rpc InitiateHandshake(HandshakeRequest) returns (HandshakeResponse);
+  
+  // Send message to another agent
+  rpc SendMessage(AgentMessage) returns (MessageResponse);
+  
+  // Stream messages for real-time communication
+  rpc StreamMessages(stream AgentMessage) returns (stream AgentMessage);
+  
+  // Retrieve conversation context
+  rpc GetContext(ContextRequest) returns (ContextResponse);
+}
+
+// Agent registration information
+message AgentRegistration {
+  string agent_id = 1;
+  string did = 2;
+  string address = 3;
+  repeated string capabilities = 4;
+  map<string, string> metadata = 5;
+  string endpoint = 6;  // gRPC endpoint for this agent
+  int64 timestamp = 7;
+}
+
+message RegistrationResponse {
+  bool success = 1;
+  string message = 2;
+  string session_id = 3;
+}
+
+// Agent discovery
+message DiscoveryRequest {
+  repeated string capabilities = 1;
+  map<string, string> filters = 2;
+  int32 max_results = 3;
+}
+
+message DiscoveryResponse {
+  repeated AgentInfo agents = 1;
+  int32 total_count = 2;
+}
+
+message AgentInfo {
+  string agent_id = 1;
+  string did = 2;
+  string address = 3;
+  repeated string capabilities = 4;
+  map<string, string> metadata = 5;
+  string endpoint = 6;
+  int64 last_seen = 7;
+  string status = 8;
+}
+
+// Heartbeat
+message HeartbeatRequest {
+  string agent_id = 1;
+  string session_id = 2;
+  string status = 3;
+}
+
+message HeartbeatResponse {
+  bool success = 1;
+  int64 next_heartbeat_interval = 2;
+}
+
+// Unregistration
+message UnregistrationRequest {
+  string agent_id = 1;
+  string session_id = 2;
+}
+
+message UnregistrationResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Handshake protocol
+message HandshakeRequest {
+  string initiator_agent_id = 1;
+  string initiator_did = 2;
+  string target_agent_id = 3;
+  bytes challenge = 4;
+  string signature = 5;
+  int64 timestamp = 6;
+  map<string, string> metadata = 7;
+}
+
+message HandshakeResponse {
+  bool success = 1;
+  string session_id = 2;
+  bytes challenge_response = 3;
+  string signature = 4;
+  string target_did = 5;
+  string message = 6;
+}
+
+// Agent-to-agent messages
+message AgentMessage {
+  string message_id = 1;
+  string from_agent_id = 2;
+  string to_agent_id = 3;
+  string session_id = 4;
+  MessageType type = 5;
+  bytes payload = 6;
+  EmotionalState emotional_state = 7;
+  int64 timestamp = 8;
+  map<string, string> metadata = 9;
+}
+
+enum MessageType {
+  TEXT = 0;
+  ACTION_REQUEST = 1;
+  ACTION_RESPONSE = 2;
+  STATUS_UPDATE = 3;
+  CONTEXT_SHARE = 4;
+  CAPABILITY_QUERY = 5;
+}
+
+message MessageResponse {
+  bool success = 1;
+  string message_id = 2;
+  string delivery_status = 3;
+  int64 delivered_at = 4;
+}
+
+// Emotional state
+message EmotionalState {
+  string emotion = 1;
+  double intensity = 2;
+  int64 timestamp = 3;
+  string context = 4;
+}
+
+// Context preservation
+message ContextRequest {
+  string session_id = 1;
+  string agent_id = 2;
+  int32 history_limit = 3;
+}
+
+message ContextResponse {
+  string session_id = 1;
+  repeated AgentMessage message_history = 2;
+  map<string, string> shared_context = 3;
+  EmotionalState current_emotional_state = 4;
+  int64 context_created_at = 5;
+  int64 last_updated_at = 6;
+}
