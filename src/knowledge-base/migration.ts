@@ -9,6 +9,12 @@ import {
 } from '../types';
 import { JWKInterface } from 'arweave/node/lib/wallet';
 
+/**
+ * Estimated compression ratio for gzip compression
+ * Typically achieves 70% reduction in size
+ */
+const ESTIMATED_COMPRESSION_RATIO = 0.3;
+
 export interface MigrationConfig {
   arweaveWallet?: JWKInterface;
   compressionEnabled?: boolean;
@@ -58,6 +64,13 @@ export class KnowledgeBaseMigration {
    */
   getArweaveClient(): ArweaveClient {
     return this.arweaveClient;
+  }
+
+  /**
+   * Get agent repository instance (for testing)
+   */
+  getAgentRepository(): AgentRepository {
+    return this.agentRepo;
   }
 
   /**
@@ -225,7 +238,10 @@ export class KnowledgeBaseMigration {
         created_at
       )
       VALUES ($1, $2, $3, $4, $5, $6)
-      ON CONFLICT DO NOTHING
+      ON CONFLICT (agent_id, arweave_tx_id) 
+      DO UPDATE SET 
+        data_hash = EXCLUDED.data_hash,
+        created_at = EXCLUDED.created_at
     `;
 
     try {
@@ -295,8 +311,8 @@ export class KnowledgeBaseMigration {
     const jsonString = JSON.stringify(knowledgeBase);
     const dataSize = Buffer.byteLength(jsonString, 'utf-8');
 
-    // Estimate with compression (assume 70% compression ratio)
-    const compressedSize = Math.floor(dataSize * 0.3);
+    // Estimate with compression
+    const compressedSize = Math.floor(dataSize * ESTIMATED_COMPRESSION_RATIO);
 
     return await this.arweaveClient.estimateStorageCost(compressedSize);
   }

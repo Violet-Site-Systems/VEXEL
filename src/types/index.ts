@@ -94,7 +94,7 @@ export interface AgentMetadata {
 
 export interface AgentMemory {
   agent_id: string;
-  memory_type: 'conversation' | 'skill' | 'emotional' | 'capability';
+  memory_type: 'conversation' | 'skill' | 'capability';
   content: Record<string, any>;
   timestamp: Date;
   metadata?: Record<string, any>;

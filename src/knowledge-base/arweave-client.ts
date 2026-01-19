@@ -7,6 +7,13 @@ import { gzipSync, gunzipSync } from 'zlib';
 dotenv.config();
 
 /**
+ * Arweave transaction tag interface
+ */
+interface ArweaveTag {
+  get(name: string, options: { decode: boolean; string: boolean }): string;
+}
+
+/**
  * Arweave client for permanent storage of agent knowledge bases
  */
 export class ArweaveClient {
@@ -163,8 +170,8 @@ export class ArweaveClient {
       // Get transaction tags to check if data is compressed
       const transaction = await this.arweave.transactions.get(txId);
       const tagsData = transaction.get('tags') as unknown;
-      const tagsArray = tagsData as any[];
-      const tags = tagsArray.reduce((acc: Record<string, string>, tag: any) => {
+      const tagsArray = tagsData as ArweaveTag[];
+      const tags = tagsArray.reduce((acc: Record<string, string>, tag: ArweaveTag) => {
         const name = tag.get('name', { decode: true, string: true });
         const value = tag.get('value', { decode: true, string: true });
         acc[name] = value;

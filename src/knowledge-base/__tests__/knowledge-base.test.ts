@@ -252,7 +252,7 @@ describe('KnowledgeBaseMigration', () => {
         last_active_at: new Date(),
       };
 
-      const mockAgentRepo = migration.getMemoryExtractor()['agentRepo'];
+      const mockAgentRepo = migration.getAgentRepository();
       jest.spyOn(mockAgentRepo, 'getAgentById').mockResolvedValue(mockAgent);
       jest.spyOn(mockAgentRepo, 'getAgentCapabilities').mockResolvedValue([]);
 
@@ -277,7 +277,7 @@ describe('KnowledgeBaseMigration', () => {
         last_active_at: new Date(),
       };
 
-      const mockAgentRepo = migration.getMemoryExtractor()['agentRepo'];
+      const mockAgentRepo = migration.getAgentRepository();
       jest.spyOn(mockAgentRepo, 'getAgentById').mockResolvedValue(mockAgent);
       jest.spyOn(mockAgentRepo, 'getAgentCapabilities').mockResolvedValue([]);
 
