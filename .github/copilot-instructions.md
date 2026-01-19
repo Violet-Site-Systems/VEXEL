@@ -115,9 +115,12 @@ npm run deploy:polygon # Deploy to Polygon mainnet
 - ✅ **Phase 1**: DID integration, wallet management, HAAP protocol (COMPLETED)
 - ✅ **Phase 2.1**: AgentHeartbeat smart contract with Chainlink automation (COMPLETED)
 - ✅ **Phase 2.3**: Knowledge base migration to Arweave (COMPLETED)
-- 📋 **Phase 3**: Multi-chain bridging, advanced semantic reasoning
+- 📋 **Phase 3.1**: API Gateway + WebSocket Layer (COMPLETED)
+- 📋 **Phase 3.2**: Monitoring Dashboard (COMPLETED)
+- 🚀 **Phase 3.3**: MAS Agent Integration (IN PROGRESS)
+  - ✅ **Sentinel Agent**: Cryptography, key management, policy enforcement, monitoring
 
-See [PHASE_3.1_QUICKSTART.md](PHASE_3.1_QUICKSTART.md) and [PHASE_3.2_QUICKSTART.md](PHASE_3.2_QUICKSTART.md) for current work.
+See [PHASE_3.1_QUICKSTART.md](PHASE_3.1_QUICKSTART.md), [PHASE_3.2_QUICKSTART.md](PHASE_3.2_QUICKSTART.md) for current work.
 
 ## Key Files to Know
 
@@ -130,6 +133,12 @@ See [PHASE_3.1_QUICKSTART.md](PHASE_3.1_QUICKSTART.md) and [PHASE_3.2_QUICKSTART
 | [src/wallet/WalletManager.ts](src/wallet/WalletManager.ts) | Polygon wallet creation & loading |
 | [contracts/AgentHeartbeat.sol](contracts/AgentHeartbeat.sol) | Agent inactivity monitoring contract |
 | [database/schema.sql](database/schema.sql) | PostgreSQL schema (agents, capabilities, memory) |
+| [src/agents/sentinel/](src/agents/sentinel/) | **NEW**: Sentinel Agent (security guardian) |
+| [src/agents/sentinel/sentinel.ts](src/agents/sentinel/sentinel.ts) | Main Sentinel Agent class |
+| [src/agents/sentinel/crypto.ts](src/agents/sentinel/crypto.ts) | Cryptographic operations (sign/verify) |
+| [src/agents/sentinel/keys.ts](src/agents/sentinel/keys.ts) | Key management (generate/rotate/revoke) |
+| [src/agents/sentinel/policy.ts](src/agents/sentinel/policy.ts) | Policy enforcement engine (RBAC/ABAC) |
+| [src/agents/sentinel/monitor.ts](src/agents/sentinel/monitor.ts) | Security monitoring & alerts |
 
 ## Common Pitfalls to Avoid
 
