@@ -201,7 +201,7 @@ Outputs:
 
 4. **Integration**: Use the Maestro bus to wire inter-agent communication once individual agents are scaffolded.
 
-5. **Incremental development**: Build agents one at a time, starting with foundational agents (Sentinel, Maestro) before moving to specialized agents (Bridge, Atlas, Prism).
+5. **Incremental development**: Build agents one at a time, starting with foundational agents (Sentinel, Maestro, Sovereign) before moving to specialized agents (Bridge, Atlas, Prism).
 
 ## Notes
 
