@@ -13,10 +13,25 @@ export {
   DIDDocument,
   VerificationMethod
 } from './utils/did';
+export {
+  HAAPProtocol,
+  HAAPConfig,
+  KYCService,
+  IKYCProvider,
+  MockKYCProvider,
+  KYCStatus,
+  KYCProvider,
+  KYCVerificationRequest,
+  KYCVerificationResult,
+  HumanAttestationToken,
+  TokenValidationResult,
+  HAAPFlowResult
+} from './haap';
 
 import { WalletManager } from './wallet/WalletManager';
 import { SignatureInjector } from './signature/SignatureInjector';
 import { BadgeMinter } from './badge/BadgeMinter';
+import { HAAPProtocol } from './haap';
 
 /**
  * Configuration for VEXEL DID Integration
@@ -25,6 +40,7 @@ export interface VexelConfig {
   network?: 'polygon' | 'polygon-mumbai';
   walletDir?: string;
   badgeContractAddress?: string;
+  haapTokenExpiryDays?: number;
 }
 
 /**
@@ -34,6 +50,7 @@ export class Vexel {
   public walletManager: WalletManager;
   public signatureInjector: SignatureInjector;
   public badgeMinter: BadgeMinter;
+  public haapProtocol: HAAPProtocol;
 
   constructor(config: VexelConfig = {}) {
     this.walletManager = new WalletManager({
@@ -43,6 +60,11 @@ export class Vexel {
     
     this.signatureInjector = new SignatureInjector(this.walletManager);
     this.badgeMinter = new BadgeMinter(this.walletManager, config.badgeContractAddress);
+    this.haapProtocol = new HAAPProtocol({
+      walletManager: this.walletManager,
+      badgeMinter: this.badgeMinter,
+      tokenExpiryDays: config.haapTokenExpiryDays
+    });
   }
 
   /**
@@ -63,5 +85,15 @@ export class Vexel {
       badge,
       did: `did:vexel:${walletInfo.address}`
     };
+  }
+
+  /**
+   * Initialize human user with complete HAAP flow: KYC → DID → Badge → Token
+   * @param userId - Unique identifier for the user
+   * @param email - User's email address
+   * @returns Complete HAAP flow result
+   */
+  async initializeHuman(userId: string, email: string) {
+    return await this.haapProtocol.executeHAAPFlow(userId, email);
   }
 }
