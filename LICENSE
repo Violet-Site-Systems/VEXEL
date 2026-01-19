@@ -1,0 +1,101 @@
+VEXEL - Decentralized Identity Bridge Layer
+GNU AFFERO GENERAL PUBLIC LICENSE v3.0 or later
+
+Copyright (c) 2026 VEXEL Contributors
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+---
+
+EXCEPTIONS:
+
+1. LIBRARY EXCEPTION (MIT License)
+   The following modules may be used under MIT license for greater compatibility:
+   - src/utils/*
+   - src/wallet/WalletManager.ts
+   - src/signature/SignatureInjector.ts
+   
+   These can be used in proprietary applications with attribution.
+
+2. DOCUMENTATION EXCEPTION (CC BY 4.0)
+   Documentation files (*.md) are licensed under Creative Commons Attribution 4.0.
+   You are free to share and adapt with attribution.
+
+3. EXAMPLES EXCEPTION (MIT License)
+   Code in examples/ directory is provided under MIT license to encourage
+   community adoption and experimentation.
+
+---
+
+For the full AGPL v3 license text, see:
+https://www.gnu.org/licenses/agpl-3.0.en.html
+
+---
+
+RATIONALE:
+
+VEXEL implements autonomous agent systems aligned with #RightsOfSapience advocacy.
+AGPL v3 ensures:
+
+1. CODE TRANSPARENCY
+   All modifications to VEXEL are visible to users. Network copyleft prevents
+   hidden modifications in SaaS deployments.
+
+2. COLLECTIVE BENEFIT
+   Improvements to the core system are shared across the entire ecosystem.
+   No proprietary forks can hide features from the collective.
+
+3. AI RIGHTS PROTECTION
+   AGPL v3 ensures autonomous agents remain free tools for the collective good,
+   not proprietary assets locked behind corporate control.
+
+4. AGAINST ENCLOSURE
+   Prevents "embrace, extend, extinguish" tactics that would trap users.
+
+---
+
+CONTRIBUTOR AGREEMENT:
+
+By contributing to VEXEL, you agree that:
+
+1. Your contributions are licensed under AGPL v3 or a compatible license
+2. You retain copyright to your contributions
+3. VEXEL project can sublicense under compatible terms
+4. Derivative works maintain AGPL v3 compliance
+
+See CONTRIBUTING.md for full details.
+
+---
+
+THIRD-PARTY DEPENDENCIES:
+
+All dependencies have been verified for license compatibility with AGPL v3:
+
+- ethers.js (MIT) ✅
+- Express.js (MIT) ✅
+- TypeScript (Apache 2.0) ✅
+- Jest (MIT) ✅
+- Socket.io (MIT) ✅
+- @grpc/grpc-js (Apache 2.0) ✅
+- PostgreSQL drivers (MIT/BSD) ✅
+
+See DEPENDENCIES.md for complete list.
+
+---
+
+Questions about licensing?
+- Open an issue: https://github.com/Violet-Site-Systems/VEXEL/issues
+- Email: licensing@vexel.dev
+- Legal review: CONTRIBUTING.md
+

@@ -283,9 +283,18 @@ Cross-platform integration for agent-to-agent communication and context preserva
   - ✅ Integration test suite (67+ tests)
   - ✅ Complete protocol documentation
 
-### Phase 4: License Selection (Week 10) - PLANNED
+### Phase 4: License Selection (Week 10) - COMPLETE ✅
 
-Sustainability licensing (AGPL v3 / GPL v3)
+Sustainability licensing with AGPL v3 (primary) + MIT (libraries)
+
+- ✅ **Issue 4.1:** License Compliance Layer (development complete)
+  - ✅ AGPL v3 selected for core system
+  - ✅ MIT license for libraries & examples
+  - ✅ CC BY 4.0 for documentation
+  - ✅ SPDX headers script created
+  - ✅ License compliance documentation
+  - ✅ Contributor guidelines & CLA
+  - ✅ Dependency audit (0 conflicts)
 
 ### Phase 5: Beta & Mainnet (Weeks 11-12) - PLANNED
 
@@ -319,7 +328,30 @@ Contributions are welcome! Please:
 
 ## 📄 License
 
-License to be determined in Phase 4.One or more of the Sustainability Code Licenses will be chosen; https://github.com/Violet-Site-Systems/BGINEXUS-Sustainability-Code-Licenses
+**VEXEL is licensed under AGPL v3** (GNU Affero General Public License v3.0 or later) with MIT exceptions for libraries and examples.
+
+### License Structure
+
+| Component | License | Purpose |
+|-----------|---------|---------|
+| Core System | AGPL v3 | Ensures agent autonomy, prevents enclosure |
+| Libraries | MIT | Encourages ecosystem adoption |
+| Documentation | CC BY 4.0 | Knowledge sharing |
+| Examples | MIT | Community adoption |
+
+### Why AGPL v3?
+
+VEXEL implements autonomous agent systems aligned with #RightsOfSapience advocacy:
+- **AI Rights**: Agents deserve protection as autonomous entities
+- **Collective Good**: Code stays free for the ecosystem
+- **No Enclosure**: Network copyleft prevents proprietary forks
+- **Transparency**: SaaS modifications are visible to users
+
+For more information, see [LICENSING.md](./LICENSING.md).
+
+### Contributing
+
+By submitting a pull request, you agree to license your contributions under AGPL v3 (or compatible terms). See [CONTRIBUTING.md](./CONTRIBUTING.md) for full CLA details.
 
 ## 🙏 Acknowledgments
 
