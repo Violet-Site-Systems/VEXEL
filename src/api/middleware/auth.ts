@@ -10,6 +10,12 @@ export class AuthMiddleware {
   private jwtSecret: string;
 
   constructor(jwtSecret?: string) {
+    if (!jwtSecret && !process.env.JWT_SECRET) {
+      if (process.env.NODE_ENV === 'production') {
+        throw new Error('JWT_SECRET must be provided in production environment');
+      }
+      console.warn('⚠️  WARNING: Using default JWT secret for development. Set JWT_SECRET environment variable for production.');
+    }
     this.jwtSecret = jwtSecret || process.env.JWT_SECRET || 'vexel-dev-secret-change-in-production';
   }
 
