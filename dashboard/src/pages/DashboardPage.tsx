@@ -26,10 +26,28 @@ export function DashboardPage() {
 
   // Merge initial agents with real-time updates
   const agents = useMemo(() => {
-    if (realtimeAgents.length > 0) {
-      return realtimeAgents;
+    const baseAgents = initialAgents || [];
+
+    // If there are no realtime updates yet, just return the initial list
+    if (!realtimeAgents || realtimeAgents.length === 0) {
+      return baseAgents;
     }
-    return initialAgents || [];
+
+    // Merge by agent ID: start from initial agents, then overlay realtime ones
+    const agentsById = new Map<string, (typeof baseAgents)[number]>();
+
+    for (const agent of baseAgents) {
+      // Use REST agent as the initial version
+      agentsById.set((agent as any).id, agent);
+    }
+
+    for (const rtAgent of realtimeAgents) {
+      const existing = agentsById.get((rtAgent as any).id);
+      // Overlay realtime data on top of any existing agent data
+      agentsById.set((rtAgent as any).id, existing ? { ...existing, ...rtAgent } : rtAgent);
+    }
+
+    return Array.from(agentsById.values());
   }, [initialAgents, realtimeAgents]);
 
   // Filter states
