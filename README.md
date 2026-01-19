@@ -13,13 +13,22 @@ This repository now includes a fully functional implementation of Phase 1 - DID 
 - ✅ **VERIFIED_HUMAN Badges**: Mint and verify human attestation badges
 - ✅ **W3C DID Compliance**: Create and manage W3C-compliant DID documents
 - ✅ **Secure Key Storage**: Encrypted wallet storage with AES-256
-- ✅ **Comprehensive Tests**: 49 tests with 83%+ coverage
+- ✅ **HAAP Protocol**: Human Attestation and Authentication Protocol (NEW!)
+- ✅ **KYC Integration**: Support for multiple KYC providers
+- ✅ **Attestation Tokens**: Cryptographically-signed human verification tokens
+- ✅ **Comprehensive Tests**: 80 tests with high coverage
 
 ### Phase 1.2 Implementation (NEW!)
 - **[PHASE_1.2_SUMMARY.md](./PHASE_1.2_SUMMARY.md)** - Complete Phase 1.2 implementation summary
 - **[SETUP.md](./SETUP.md)** - Database and IPFS setup guide (400+ lines)
 - **[TESTING.md](./TESTING.md)** - Comprehensive testing guide (350+ lines)
 - **[database/README.md](./database/README.md)** - Database schema documentation (270+ lines)
+
+### Phase 1.3 Implementation (NEW!)
+- **[HAAP_PROTOCOL.md](./docs/HAAP_PROTOCOL.md)** - Complete HAAP Protocol documentation
+- **KYC Service**: Human verification with provider abstraction
+- **Attestation Tokens**: Cryptographically-signed verification tokens
+- **31 Comprehensive Tests**: Full test coverage for HAAP flow
 
 ## 🚀 Quick Start
 
@@ -42,6 +51,8 @@ npm run build
 
 ### Basic Usage
 
+#### Agent Identity (Phase 1.1)
+
 ```typescript
 import { Vexel } from 'vexel';
 
@@ -58,15 +69,51 @@ console.log('Agent Address:', agent.wallet.address);
 console.log('Agent DID:', agent.did);
 ```
 
-### Run the Demo
+#### Human Verification (Phase 1.3 - HAAP Protocol)
+
+```typescript
+import { Vexel } from 'vexel';
+
+// Initialize VEXEL with HAAP support
+const vexel = new Vexel({
+  network: 'polygon-mumbai',
+  walletDir: './wallets',
+  haapTokenExpiryDays: 365
+});
+
+// Execute complete HAAP flow: KYC → DID → Badge → Token
+const result = await vexel.initializeHuman(
+  'user_12345',
+  'user@example.com'
+);
+
+console.log('User DID:', result.did);
+console.log('Badge Token ID:', result.badge.tokenId);
+console.log('Attestation Token:', result.attestationToken.tokenId);
+
+// Validate attestation token
+const validation = await vexel.haapProtocol.validateToken(
+  result.attestationToken.tokenId
+);
+
+console.log('Token valid:', validation.valid);
+```
+
+### Run the Examples
 
 ```bash
 npm run build
+
+# Agent demo
 node examples/demo.js my-agent-id
+
+# HAAP protocol demo
+npx ts-node examples/haap-example.ts
 ```
 
 ## 📖 Documentation
 
+- **[HAAP Protocol](./docs/HAAP_PROTOCOL.md)** - Human Attestation and Authentication Protocol guide
 - **[Setup Guide](./docs/WALLET_SETUP_GUIDE.md)** - Complete API reference and setup instructions
 - **[Implementation Steps](./IMPLEMENTATION_STEPS.md)** - Detailed breakdown of all phases
 - **[Project Documentation](./PROJECT_DOCUMENTATION.md)** - Complete project guide
@@ -80,10 +127,13 @@ npm test
 
 # Run with coverage
 npm run test:coverage
+
+# Run HAAP-specific tests
+npm test -- src/haap
 ```
 
-**Test Results:** 49/49 tests passing ✅  
-**Coverage:** 83.4% statements, 84.8% lines
+**Test Results:** 80 tests passing ✅  
+**Coverage:** High coverage across all modules
 
 ## 📦 Project Structure
 
@@ -93,16 +143,22 @@ VEXEL/
 │   ├── wallet/          # Wallet creation and management
 │   ├── signature/       # Cryptographic signature injection
 │   ├── badge/           # VERIFIED_HUMAN badge minting
+│   ├── haap/            # HAAP Protocol (KYC, attestation tokens)
+│   ├── database/        # Database integration
+│   ├── ipfs/            # IPFS integration
 │   ├── utils/           # DID utilities and helpers
 │   └── index.ts         # Main entry point
 ├── docs/                # Documentation
+│   └── HAAP_PROTOCOL.md # HAAP Protocol documentation
 ├── examples/            # Usage examples
+│   ├── demo.js          # Agent initialization demo
+│   └── haap-example.ts  # HAAP Protocol demo
 └── dist/                # Compiled output
 ```
 
 ## 📋 Project Status
 
-**Status:** ✅ Phase 1 Complete - Ready for Phase 2  
+**Status:** ✅ Phase 1.3 Complete - HAAP Protocol Implemented  
 **Timeline:** 12 weeks (3 months)  
 **Total Issues:** 13 across 5 phases  
 
@@ -111,18 +167,18 @@ VEXEL/
 VEXEL implements a multi-layer architecture:
 
 - **Blockchain Layer:** Ethereum/Polygon, Smart Contracts, DID Registry
-- **Data Layer:** PostgreSQL, IPFS, Arweave, Subgraph Protocol (Phase 1.2 - Planned)
-- **Application Layer:** DID Integration ✅, HAAP Protocol (Phase 1.3 - Planned), Inheritance Engine
+- **Data Layer:** PostgreSQL, IPFS, Arweave, Subgraph Protocol (Phase 1.2 - Implemented)
+- **Application Layer:** DID Integration ✅, HAAP Protocol ✅, Inheritance Engine
 - **Bridge Layer:** API Gateway, WebSocket, Cross-Platform Integration (Phase 3 - Planned)
 - **User Interface:** Monitoring Dashboard, Real-time Status Feeds (Phase 3 - Planned)
 
 ## 🎯 Project Phases
 
-### Phase 1: Copilot → MAS Bridge (Weeks 1-3) - IN PROGRESS
+### Phase 1: Copilot → MAS Bridge (Weeks 1-3) - COMPLETED ✅
 
 - ✅ **Issue 1.1:** DID integration with Polygon wallets, signature injection, and badge minting
-- ⏳ **Issue 1.2:** Database schema (PostgreSQL + Subgraph)
-- ⏳ **Issue 1.3:** HAAP Protocol implementation
+- ✅ **Issue 1.2:** Database schema (PostgreSQL + Subgraph)
+- ✅ **Issue 1.3:** HAAP Protocol implementation (KYC → DID → Badge → Token)
 
 ### Phase 2: Inheritance Engine (Weeks 4-6) - PLANNED
 
