@@ -11,7 +11,13 @@
     "test:watch": "jest --watch",
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run clean && npm run build",
-    "demo": "npm run build && node examples/demo.js"
+    "demo": "npm run build && node examples/demo.js",
+    "compile": "hardhat compile",
+    "test:contracts": "hardhat test test/contracts/*.test.ts",
+    "deploy:mumbai": "hardhat run scripts/deploy-heartbeat.js --network mumbai",
+    "deploy:polygon": "hardhat run scripts/deploy-heartbeat.js --network polygon",
+    "verify:mumbai": "hardhat verify --network mumbai",
+    "verify:polygon": "hardhat verify --network polygon"
   },
   "keywords": [
     "did",
@@ -31,8 +37,14 @@
     "ethers": "^6.16.0"
   },
   "devDependencies": {
+    "@chainlink/contracts": "^1.4.0",
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@nomicfoundation/hardhat-verify": "^2.1.3",
+    "@openzeppelin/contracts": "^5.4.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.9",
+    "dotenv": "^17.2.3",
+    "hardhat": "^2.28.3",
     "jest": "^30.2.0",
     "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",

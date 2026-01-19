@@ -2,29 +2,49 @@
 
 A DID Bridge Layer creating sovereign interoperability across distributed identity systems. VEXEL connects decentralized identifiers across ecosystems, enabling autonomous, cross-chain identity bridging while preserving cryptographic sovereignty. No gatekeepers. No middlemen. Just pure, protocol-level identity freedom.
 
-## 🎯 Phase 1: DID Integration - IMPLEMENTED ✅
+## 🎯 Current Status
 
-This repository now includes a fully functional implementation of Phase 1 - DID Integration with Copilot CLI.
+### Phase 1: DID Integration - COMPLETED ✅
 
-### Features Implemented
+This repository includes a fully functional implementation of Phase 1 - DID Integration with Copilot CLI.
 
+**Features Implemented:**
 - ✅ **Wallet Management**: Create and manage Polygon wallets for Copilot agents
 - ✅ **Cryptographic Signatures**: Sign messages and transactions with agent private keys
 - ✅ **VERIFIED_HUMAN Badges**: Mint and verify human attestation badges
 - ✅ **W3C DID Compliance**: Create and manage W3C-compliant DID documents
 - ✅ **Secure Key Storage**: Encrypted wallet storage with AES-256
-- ✅ **HAAP Protocol**: Human Attestation and Authentication Protocol (NEW!)
+- ✅ **HAAP Protocol**: Human Attestation and Authentication Protocol
 - ✅ **KYC Integration**: Support for multiple KYC providers
 - ✅ **Attestation Tokens**: Cryptographically-signed human verification tokens
 - ✅ **Comprehensive Tests**: 80 tests with high coverage
 
-### Phase 1.2 Implementation (NEW!)
+### Phase 2.1: Smart Contract Deployment - DEVELOPMENT COMPLETE ✅
+
+**AgentHeartbeat Contract (NEW!):**
+- ✅ **Smart Contract**: Solidity contract for agent heartbeat monitoring
+- ✅ **Chainlink Integration**: Automated inactivity detection via Chainlink Automation
+- ✅ **Comprehensive Tests**: 17+ test cases with full coverage
+- ✅ **Deployment Scripts**: Automated deployment for testnet and mainnet
+- ✅ **Documentation**: Complete API, deployment, integration, and security guides
+- ⏳ **Testnet Deployment**: Ready for Mumbai testnet deployment
+- ⏳ **Security Audit**: Required before mainnet deployment
+
+**Documentation:**
+- **[PHASE_2.1_SUMMARY.md](./PHASE_2.1_SUMMARY.md)** - Complete Phase 2.1 implementation summary
+- **[contracts/README.md](./contracts/README.md)** - Smart contracts overview
+- **[docs/contracts/](./docs/contracts/)** - Complete contract documentation (4 guides)
+
+### Previous Phase Documentation
+
+**Phase 1.2 Implementation:**
 - **[PHASE_1.2_SUMMARY.md](./PHASE_1.2_SUMMARY.md)** - Complete Phase 1.2 implementation summary
 - **[SETUP.md](./SETUP.md)** - Database and IPFS setup guide (400+ lines)
 - **[TESTING.md](./TESTING.md)** - Comprehensive testing guide (350+ lines)
 - **[database/README.md](./database/README.md)** - Database schema documentation (270+ lines)
 
-### Phase 1.3 Implementation (NEW!)
+**Phase 1.3 Implementation:**
+- **[PHASE_1.3_SUMMARY.md](./PHASE_1.3_SUMMARY.md)** - Complete Phase 1.3 implementation summary
 - **[HAAP_PROTOCOL.md](./docs/HAAP_PROTOCOL.md)** - Complete HAAP Protocol documentation
 - **KYC Service**: Human verification with provider abstraction
 - **Attestation Tokens**: Cryptographically-signed verification tokens
@@ -180,9 +200,17 @@ VEXEL implements a multi-layer architecture:
 - ✅ **Issue 1.2:** Database schema (PostgreSQL + Subgraph)
 - ✅ **Issue 1.3:** HAAP Protocol implementation (KYC → DID → Badge → Token)
 
-### Phase 2: Inheritance Engine (Weeks 4-6) - PLANNED
+### Phase 2: Inheritance Engine (Weeks 4-6) - IN PROGRESS 🔄
 
 Smart contracts, digital will, knowledge base migration
+
+- ✅ **Issue 2.1:** Smart contract deployment (development complete, awaiting testnet deployment)
+  - ✅ AgentHeartbeat contract with Chainlink Automation
+  - ✅ Comprehensive test suite (17+ tests)
+  - ✅ Deployment scripts and documentation
+  - ⏳ Testnet deployment pending
+- ⏳ **Issue 2.2:** Digital Will integration
+- ⏳ **Issue 2.3:** Knowledge base migration
 
 ### Phase 3: Bridge Layer (Weeks 7-9) - PLANNED
 

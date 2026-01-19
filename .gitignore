@@ -9,3 +9,8 @@ coverage/
 wallets/
 demo-wallets/
 test-wallets*/
+
+# Hardhat files
+cache/
+artifacts/
+typechain-types/
