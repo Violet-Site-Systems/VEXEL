@@ -27,12 +27,13 @@ export {
   TokenValidationResult,
   HAAPFlowResult
 } from './haap';
-export {
-  ArweaveClient,
-  MemoryExtractor,
-  KnowledgeBaseMigration,
-  MigrationConfig
-} from './knowledge-base';
+// Note: knowledge-base exports temporarily commented out due to database dependencies
+// export {
+//   ArweaveClient,
+//   MemoryExtractor,
+//   KnowledgeBaseMigration,
+//   MigrationConfig
+// } from './knowledge-base';
 export {
   AgentMemory,
   EmotionalMemory,
@@ -40,6 +41,26 @@ export {
   ArweaveMigrationResult,
   MigrationMetadata
 } from './types';
+export {
+  APIGateway,
+  APIGatewayConfig,
+  WebSocketServer,
+  WebSocketConfig,
+  SemanticLayer,
+  EmotionalStateTracker,
+  AuthMiddleware,
+  ActionVerificationMiddleware,
+  EmotionType,
+  EmotionalState,
+  SemanticMessage,
+  WebSocketEvent,
+  WebSocketMessage,
+  ActionType,
+  ActionRequest,
+  ActionVerificationResult,
+  JWTPayload,
+  APIResponse
+} from './api';
 
 import { WalletManager } from './wallet/WalletManager';
 import { SignatureInjector } from './signature/SignatureInjector';
