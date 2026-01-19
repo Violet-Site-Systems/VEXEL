@@ -1,0 +1,17 @@
+{
+  "name": "vexel-subgraph",
+  "version": "1.0.0",
+  "description": "VEXEL Agent Metadata Subgraph",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ vexel/agents",
+    "create-local": "graph create --node http://localhost:8020/ vexel/agents",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 vexel/agents"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.56.0",
+    "@graphprotocol/graph-ts": "^0.31.0"
+  },
+  "dependencies": {}
+}

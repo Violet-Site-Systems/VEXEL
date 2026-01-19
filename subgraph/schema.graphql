@@ -1,0 +1,41 @@
+type Agent @entity {
+  id: ID!
+  did: String!
+  name: String!
+  description: String
+  ownerAddress: Bytes!
+  ipfsMetadataHash: String
+  runtimeStatus: RuntimeStatus!
+  createdAt: BigInt!
+  updatedAt: BigInt!
+  lastActiveAt: BigInt!
+  capabilities: [Capability!]! @derivedFrom(field: "agent")
+  statusHistory: [StatusChange!]! @derivedFrom(field: "agent")
+}
+
+type Capability @entity {
+  id: ID!
+  agent: Agent!
+  name: String!
+  value: String!
+  version: Int!
+  createdAt: BigInt!
+  updatedAt: BigInt!
+}
+
+type StatusChange @entity {
+  id: ID!
+  agent: Agent!
+  previousStatus: RuntimeStatus
+  newStatus: RuntimeStatus!
+  timestamp: BigInt!
+  reason: String
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+enum RuntimeStatus {
+  ACTIVE
+  SLEEP
+  TERMINATED
+}

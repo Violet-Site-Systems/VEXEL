@@ -15,6 +15,12 @@ This repository now includes a fully functional implementation of Phase 1 - DID 
 - ✅ **Secure Key Storage**: Encrypted wallet storage with AES-256
 - ✅ **Comprehensive Tests**: 49 tests with 83%+ coverage
 
+### Phase 1.2 Implementation (NEW!)
+- **[PHASE_1.2_SUMMARY.md](./PHASE_1.2_SUMMARY.md)** - Complete Phase 1.2 implementation summary
+- **[SETUP.md](./SETUP.md)** - Database and IPFS setup guide (400+ lines)
+- **[TESTING.md](./TESTING.md)** - Comprehensive testing guide (350+ lines)
+- **[database/README.md](./database/README.md)** - Database schema documentation (270+ lines)
+
 ## 🚀 Quick Start
 
 ### Installation

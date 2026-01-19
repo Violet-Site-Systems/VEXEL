@@ -1,0 +1,46 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "name": "owner", "type": "address" },
+        { "indexed": false, "name": "did", "type": "string" },
+        { "indexed": false, "name": "name", "type": "string" },
+        { "indexed": false, "name": "description", "type": "string" },
+        { "indexed": true, "name": "ipfsHash", "type": "string" }
+      ],
+      "name": "AgentRegistered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": false, "name": "did", "type": "string" },
+        { "indexed": false, "name": "name", "type": "string" },
+        { "indexed": false, "name": "ipfsHash", "type": "string" }
+      ],
+      "name": "AgentUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": false, "name": "did", "type": "string" },
+        { "indexed": false, "name": "previousStatus", "type": "uint8" },
+        { "indexed": false, "name": "newStatus", "type": "uint8" }
+      ],
+      "name": "AgentStatusChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": false, "name": "did", "type": "string" },
+        { "indexed": false, "name": "capabilityName", "type": "string" },
+        { "indexed": false, "name": "capabilityValue", "type": "string" }
+      ],
+      "name": "CapabilityAdded",
+      "type": "event"
+    }
+  ]
+}
