@@ -27,6 +27,19 @@ export {
   TokenValidationResult,
   HAAPFlowResult
 } from './haap';
+export {
+  ArweaveClient,
+  MemoryExtractor,
+  KnowledgeBaseMigration,
+  MigrationConfig
+} from './knowledge-base';
+export {
+  AgentMemory,
+  EmotionalMemory,
+  KnowledgeBase,
+  ArweaveMigrationResult,
+  MigrationMetadata
+} from './types';
 
 import { WalletManager } from './wallet/WalletManager';
 import { SignatureInjector } from './signature/SignatureInjector';
