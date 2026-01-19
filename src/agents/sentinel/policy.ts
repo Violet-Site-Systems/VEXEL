@@ -128,10 +128,8 @@ export class PolicyEngine {
         return false;
       }
 
-      // Check action match
-      if (!this.matchPattern(rule.action === 'allow' ? 'allow' : 'deny', context.action)) {
-        return false;
-      }
+      // Note: action in rule is 'allow'/'deny' (the effect), not what action is being requested
+      // We match all rules and then evaluate by action type
 
       return true;
     });
