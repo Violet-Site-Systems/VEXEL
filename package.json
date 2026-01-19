@@ -32,6 +32,7 @@
   "author": "VEXEL Team",
   "license": "ISC",
   "dependencies": {
+    "arweave": "^1.15.7",
     "did-jwt": "^8.0.18",
     "did-resolver": "^4.1.0",
     "ethers": "^6.16.0"

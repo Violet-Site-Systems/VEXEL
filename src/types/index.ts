@@ -87,3 +87,53 @@ export interface AgentMetadata {
   version: string;
   created_at: string;
 }
+
+/**
+ * Knowledge base and memory types for Arweave migration
+ */
+
+export interface AgentMemory {
+  agent_id: string;
+  memory_type: 'conversation' | 'skill' | 'emotional' | 'capability';
+  content: Record<string, any>;
+  timestamp: Date;
+  metadata?: Record<string, any>;
+}
+
+export interface EmotionalMemory {
+  agent_id: string;
+  emotion_type: string;
+  intensity: number;
+  context: string;
+  timestamp: Date;
+  associated_memories?: string[];
+}
+
+export interface KnowledgeBase {
+  agent_id: string;
+  agent_did: string;
+  memories: AgentMemory[];
+  emotional_memories: EmotionalMemory[];
+  capabilities: CapabilityVector[];
+  extracted_at: Date;
+  version: string;
+}
+
+export interface ArweaveMigrationResult {
+  transaction_id: string;
+  arweave_url: string;
+  agent_id: string;
+  data_size: number;
+  compressed_size: number;
+  timestamp: Date;
+  cost_estimate?: string;
+}
+
+export interface MigrationMetadata {
+  agent_id: string;
+  agent_did: string;
+  migration_type: 'full' | 'incremental';
+  data_hash: string;
+  arweave_tx_id: string;
+  created_at: Date;
+}
