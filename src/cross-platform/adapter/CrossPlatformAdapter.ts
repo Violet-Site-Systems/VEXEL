@@ -39,6 +39,7 @@ export class CrossPlatformAdapter extends EventEmitter {
   private protoDescriptor: any;
   private currentAgentId?: string;
   private currentSessionId?: string;
+  private heartbeatIntervalId?: NodeJS.Timeout;
 
   constructor(walletManager: WalletManager, config: CrossPlatformConfig = {}) {
     super();
@@ -470,7 +471,13 @@ export class CrossPlatformAdapter extends EventEmitter {
   }
 
   private startHeartbeat(agentId: string, sessionId: string): void {
-    setInterval(async () => {
+    // Clear existing heartbeat if any
+    if (this.heartbeatIntervalId) {
+      clearInterval(this.heartbeatIntervalId);
+    }
+    
+    // Start new heartbeat
+    this.heartbeatIntervalId = setInterval(async () => {
       try {
         await this.discoveryService.heartbeat(agentId, sessionId, AgentStatus.ACTIVE);
       } catch (error) {
@@ -483,6 +490,12 @@ export class CrossPlatformAdapter extends EventEmitter {
    * Shutdown adapter
    */
   async shutdown(): Promise<void> {
+    // Clear heartbeat interval
+    if (this.heartbeatIntervalId) {
+      clearInterval(this.heartbeatIntervalId);
+      this.heartbeatIntervalId = undefined;
+    }
+
     // Unregister agent
     await this.unregisterAgent();
 

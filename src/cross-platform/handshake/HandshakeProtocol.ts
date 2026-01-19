@@ -348,9 +348,8 @@ export class HandshakeProtocol extends EventEmitter {
       // Extract address from DID
       const address = did.replace('did:vexel:', '');
       
-      // For now, we'll use a simplified verification
-      // In production, this should use proper signature recovery and validation
-      return !!(signature && signature.length > 0);
+      // Use SignatureInjector for proper cryptographic verification
+      return this.signatureInjector.verifySignature(message, signature, address);
     } catch (error) {
       console.error('Signature verification failed:', error);
       return false;
