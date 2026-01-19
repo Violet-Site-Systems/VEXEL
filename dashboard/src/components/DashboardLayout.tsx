@@ -48,27 +48,33 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         {/* Sidebar */}
         <aside className="w-64 bg-slate-800 border-r border-slate-700 min-h-[calc(100vh-73px)] p-4">
           <nav className="space-y-2">
-            <a
-              href="#overview"
-              className="flex items-center space-x-3 px-4 py-3 rounded-lg bg-primary-600 text-white"
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg bg-primary-600 text-white"
             >
               <Home className="w-5 h-5" />
               <span>Overview</span>
-            </a>
-            <a
-              href="#alerts"
-              className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-slate-700 transition-colors"
+            </button>
+            <button
+              onClick={() => {
+                const alertsSection = document.getElementById('alerts-section');
+                alertsSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-slate-700 transition-colors text-left"
             >
               <Bell className="w-5 h-5" />
               <span>Alerts</span>
-            </a>
-            <a
-              href="#settings"
-              className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-slate-700 transition-colors"
+            </button>
+            <button
+              onClick={() => {
+                const settingsSection = document.getElementById('settings-section');
+                settingsSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-slate-700 transition-colors text-left"
             >
               <Settings className="w-5 h-5" />
               <span>Settings</span>
-            </a>
+            </button>
           </nav>
         </aside>
 

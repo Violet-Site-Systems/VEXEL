@@ -10,13 +10,13 @@ import { AlertList } from '../components/AlertList';
 import { TriggerList } from '../components/TriggerList';
 import { AgentStatusChart, AgentActivityChart } from '../components/Charts';
 import { SearchBar, StatusFilter, AlertSeverityFilter } from '../components/Filters';
-import { useAgents, useDashboardStats } from '../hooks/useApi';
+import { useAgents, useDashboardStats, useAuth } from '../hooks/useApi';
 import { useWebSocket, useAgentUpdates, useAlerts, useTriggers } from '../hooks/useWebSocket';
 import { AgentStatus, AlertSeverity } from '../types';
 import { filterAgents } from '../utils/helpers';
 
 export function DashboardPage() {
-  const { token } = useAuth();
+  const { token, user } = useAuth();
   const { isConnected } = useWebSocket(token);
   const { data: initialAgents, loading: agentsLoading } = useAgents();
   const { data: stats, loading: statsLoading } = useDashboardStats();
@@ -51,7 +51,7 @@ export function DashboardPage() {
   }, [alerts, alertSeverityFilter]);
 
   const handleAcknowledgeAlert = (alertId: string) => {
-    const userId = 'current-user'; // This should come from auth context
+    const userId = user?.userId || 'unknown';
     acknowledgeAlert(alertId, userId);
   };
 
@@ -139,7 +139,7 @@ export function DashboardPage() {
       </section>
 
       {/* Alerts Section */}
-      <section className="mb-8">
+      <section id="alerts-section" className="mb-8">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold">Guardian Alerts</h2>
           <AlertSeverityFilter selected={alertSeverityFilter} onChange={setAlertSeverityFilter} />
@@ -148,13 +148,10 @@ export function DashboardPage() {
       </section>
 
       {/* Inheritance Triggers Section */}
-      <section>
+      <section id="settings-section">
         <h2 className="text-2xl font-bold mb-4">Inheritance Triggers</h2>
         <TriggerList triggers={triggers} />
       </section>
     </DashboardLayout>
   );
 }
-
-// Import useAuth hook
-import { useAuth } from '../hooks/useApi';
