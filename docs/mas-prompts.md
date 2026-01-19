@@ -185,7 +185,7 @@ Features:
 Outputs:
 - src/weaver/registry.{ext}
 - src/weaver/sdk.{ext}
-- src/weaver/manifest.ts (JSON Schema)
+- src/weaver/manifest.{ext} (JSON Schema)
 - tests/plugins/weaver.test.ts
 ```
 
