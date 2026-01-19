@@ -33,7 +33,7 @@ export function useApi<T>(
 
   useEffect(() => {
     fetch();
-  }, dependencies);
+  }, [fetch, ...dependencies]);
 
   return { data, loading, error, refetch: fetch };
 }
