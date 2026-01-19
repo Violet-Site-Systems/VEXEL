@@ -185,6 +185,25 @@ export class WebSocketService {
   requestAgentStatus(agentId?: string): void {
     this.send('request_agent_status', { agentId });
   }
+
+  /**
+   * Update authentication token and reconnect
+   */
+  updateToken(newToken: string): void {
+    if (this.token === newToken) {
+      return; // No change needed
+    }
+
+    this.token = newToken;
+
+    // If connected, reconnect with new token
+    if (this.socket && this.socket.connected) {
+      this.disconnect();
+      this.connect(newToken).catch((err) => {
+        console.error('Failed to reconnect with new token:', err);
+      });
+    }
+  }
 }
 
 // Singleton instance

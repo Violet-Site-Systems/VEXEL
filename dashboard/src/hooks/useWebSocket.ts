@@ -40,6 +40,15 @@ export function useAgentUpdates() {
       setAgents((prev) => {
         const newMap = new Map(prev);
         newMap.set(agent.agentId, agent);
+        
+        // Limit to last 100 agents to prevent memory leak
+        if (newMap.size > 100) {
+          const firstKey = newMap.keys().next().value;
+          if (firstKey) {
+            newMap.delete(firstKey);
+          }
+        }
+        
         return newMap;
       });
     };

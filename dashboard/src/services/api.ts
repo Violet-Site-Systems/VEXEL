@@ -88,11 +88,17 @@ export class ApiService {
    */
   async getAlerts(): Promise<GuardianAlert[]> {
     // Mock data for now - will be replaced with actual API call
+    if (import.meta.env.MODE !== 'production') {
+      console.warn('getAlerts() is using mock implementation - no real data available');
+    }
     return [];
   }
 
   async acknowledgeAlert(alertId: string, userId: string): Promise<void> {
     // Mock implementation
+    if (import.meta.env.MODE !== 'production') {
+      console.warn('acknowledgeAlert() is using mock implementation - no real action taken');
+    }
     console.log('Acknowledging alert:', alertId, 'by', userId);
   }
 
@@ -101,6 +107,9 @@ export class ApiService {
    */
   async getTriggers(): Promise<InheritanceTrigger[]> {
     // Mock data for now - will be replaced with actual API call
+    if (import.meta.env.MODE !== 'production') {
+      console.warn('getTriggers() is using mock implementation - no real data available');
+    }
     return [];
   }
 
