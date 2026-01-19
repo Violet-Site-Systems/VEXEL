@@ -61,6 +61,37 @@ export {
   JWTPayload,
   APIResponse
 } from './api';
+export {
+  CrossPlatformAdapter,
+  AgentDiscoveryService,
+  AgentDiscoveryConfig,
+  HandshakeProtocol,
+  HandshakeConfig,
+  ContextStorage,
+  ContextStorageConfig,
+  CrossPlatformConfig,
+  AgentRegistration,
+  AgentInfo,
+  AgentStatus,
+  DiscoveryRequest,
+  DiscoveryResponse,
+  HandshakeRequest,
+  HandshakeResponse,
+  HandshakeSession,
+  MessageType,
+  AgentMessage,
+  MessageResponse,
+  DeliveryStatus,
+  EmotionalStateData,
+  ConversationContext,
+  ContextRequest,
+  ContextResponse,
+  IAgentDiscoveryService,
+  IAgentCommunicationService,
+  IContextStorage,
+  CrossPlatformEvent,
+  CrossPlatformEventData
+} from './cross-platform';
 
 import { WalletManager } from './wallet/WalletManager';
 import { SignatureInjector } from './signature/SignatureInjector';
