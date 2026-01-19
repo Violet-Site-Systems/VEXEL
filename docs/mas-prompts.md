@@ -1,46 +1,18 @@
- Scaffold the MAS for VEXEL
+# VEXEL MAS - Copilot-Ready Agent Prompts
 
+## Instructions for GitHub Copilot / Coding Assistants
 
+Use the prompts below with your Copilot Chat Workspace or coding assistant to scaffold each agent's code, config, and tests. Replace `{lang}` with your target stack (e.g., TypeScript/Node.js or Python/FastAPI).
 
-Docs to create:
-- MAS Overview
-- Copilot-ready prompts
-
-Below is what to put in each file.
+For architecture overview and system design, see [mas-overview.md](./mas-overview.md).
 
 ---
 
-MAS Overview (save as docs/mas-overview.md)
+## 1) Bridge Agent: Connector
 
-VEXEL Multi-Agent System (MAS) Overview
+### Prompt:
 
-Purpose
-Enable unified, sovereign, cross-platform identity via a coordinated, secure, and extensible multi-agent architecture.
-
-Core Principles
-- Universality: One identity across any platform
-- Sovereignty: User-owned keys and control
-- Autonomy: Protocol-level freedom and privacy
-- Interoperability: Connect apps without gatekeepers
-- Extensibility: Open plugin architecture for custom integrations
-
-Capabilities
-- Identity unification and synthesis
-- Cross-platform protocol bridging
-- Privacy-preserving data flow with fine-grained consent
-- Secure key management and attestation
-- Dynamic route optimization and discovery
-- Modular, plugin-first connectors
-
----
-
-Copilot-ready agent definitions (save as docs/mas-prompts.md)
-
-Instructions for GitHub Copilot / coding assistants
-Use the block below with your Copilot Chat Workspace or assistant to scaffold each agent’s code, config, and tests. Replace {lang} with your target stack (e.g., TypeScript/Node.js or Python/FastAPI).
-
-1) Bridge Agent: Connector
-Prompt:
+```
 Create the Bridge Agent ({lang}):
 - Implements interoperability and protocol translation
 - Translates between different API formats (REST/GraphQL/gRPC, proprietary)
@@ -59,9 +31,15 @@ Outputs (please generate):
 - src/agents/bridge/bridges.ts with adapters
 - src/agents/bridge/config.ts
 - tests/unit/queries/bridge.test.ts
+```
 
-2) Sentinel Agent: Guardian
-Prompt:
+---
+
+## 2) Sentinel Agent: Guardian
+
+### Prompt:
+
+```
 Create the Sentinel Agent ({lang}):
 - Manages cryptographic keys, handles signing and verification
 - Verifies digital signatures and attestation chains
@@ -80,9 +58,15 @@ Outputs:
 - src/agents/sentinel/policy.{ext} with rules engine
 - src/agents/sentinel/monitor.{ext} for alerts/triggers
 - tests/unit/security/sentinel.test.ts
+```
 
-3) Sovereign Agent: Keeper
-Prompt:
+---
+
+## 3) Sovereign Agent: Keeper
+
+### Prompt:
+
+```
 Create the Sovereign Agent ({lang}):
 - Manages user preferences and consent
 - Controls data sharing with granular permissions
@@ -92,16 +76,22 @@ Features:
 - Preference store (versioned, auditable)
 - Consent ledger (purpose-based, scope, expiration)
 - Privacy rule evaluation engine
-- Consent revocation and propogation
+- Consent revocation and propagation
 
 Outputs:
 - src/agents/sovereign/preference.{ext}
-- src/agents/sentinel/consent.{ext}
+- src/agents/sovereign/consent.{ext}
 - src/agents/sovereign/privacy.{ext}
 - tests/unit/policies/sovereign.test.ts
+```
 
-4) Atlas Agent: Global Navigator
-Prompt:
+---
+
+## 4) Atlas Agent: Global Navigator
+
+### Prompt:
+
+```
 Create the Atlas Agent ({lang}):
 - Maps the connected platforms ecosystem
 - Finds optimal paths for data flow
@@ -119,9 +109,15 @@ Outputs:
 - src/agents/atlas/router.{ext}
 - src/agents/atlas/discovery.{ext}
 - tests/unit/topology/atlas.test.ts
+```
 
-5) Prism Agent: Harmonizer
-Prompt:
+---
+
+## 5) Prism Agent: Harmonizer
+
+### Prompt:
+
+```
 Create the Prism Agent ({lang}):
 - Merges identity fragments from multiple sources
 - Normalizes data formats to a unified view
@@ -139,9 +135,15 @@ Outputs:
 - src/agents/prism/normalize.{ext}
 - src/agents/prism/resolve.{ext}
 - tests/unit/fusion/prism.test.ts
+```
 
-6) Maestro Agent: Orchestrator
-Prompt:
+---
+
+## 6) Maestro Agent: Orchestrator
+
+### Prompt:
+
+```
 Create the Maestro Agent ({lang}):
 - Coordinates all agents and distributes workload
 - Handles inter-agent communication and message routing
@@ -160,9 +162,15 @@ Outputs:
 - src/maestro/workflows.{ext}
 - src/maestro/health.{ext}
 - tests/integration/maestro.test.ts
+```
 
-7) Weaver Agent: Extender (Plugins)
-Prompt:
+---
+
+## 7) Weaver Agent: Extender (Plugins)
+
+### Prompt:
+
+```
 Create the Weaver Agent ({lang}):
 - Provides plugin architecture and SDK interfaces
 - Manages developer tools and custom connectors
@@ -179,12 +187,26 @@ Outputs:
 - src/weaver/sdk.{ext}
 - src/weaver/manifest.ts (JSON Schema)
 - tests/plugins/weaver.test.ts
+```
 
-How to proceed (recommended workflow)
-- For each agent: copy the corresponding prompt into your Copilot Chat workspace and ask it to generate the outputs listed.
-- Keep the {lang} placeholder if you want to allow multiple stacks; or hardcode TypeScript/Node.js (or your chosen stack) for consistency.
-- Run the generated tests after each agent to validate behavior.
-- Use the Maestro bus to wire inter-agent communication once individual agents are scaffolded.
+---
 
-Copied from ASI1
+## How to Proceed (Recommended Workflow)
 
+1. **For each agent**: Copy the corresponding prompt into your Copilot Chat workspace and ask it to generate the outputs listed.
+
+2. **Language selection**: Keep the `{lang}` placeholder if you want to allow multiple stacks; or hardcode TypeScript/Node.js (or your chosen stack) for consistency.
+
+3. **Testing**: Run the generated tests after each agent to validate behavior.
+
+4. **Integration**: Use the Maestro bus to wire inter-agent communication once individual agents are scaffolded.
+
+5. **Incremental development**: Build agents one at a time, starting with foundational agents (Sentinel, Maestro) before moving to specialized agents (Bridge, Atlas, Prism).
+
+## Notes
+
+- All agents should follow the same architectural patterns and interfaces for consistency
+- Consider implementing a base agent class/interface that all agents extend
+- Ensure proper error handling and logging across all agents
+- Use dependency injection for better testability
+- Document all public APIs and interfaces
