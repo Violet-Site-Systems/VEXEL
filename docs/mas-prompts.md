@@ -28,8 +28,8 @@ Features:
 Outputs (please generate):
 - src/agents/bridge/* with type-safe bridges
 - src/agents/bridge/types.ts and schemas
-- src/agents/bridge/bridges.ts with adapters
-- src/agents/bridge/config.ts
+- src/agents/bridge/bridges.{ext} with adapters
+- src/agents/bridge/config.{ext}
 - tests/unit/queries/bridge.test.ts
 ```
 
