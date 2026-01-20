@@ -2,9 +2,9 @@
  * Authentication middleware using JWT
  */
 
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { JWTPayload, APIResponse } from '../types';
+import { AuthRequest, JWTPayload, APIResponse } from '../types';
 
 export class AuthMiddleware {
   private jwtSecret: string;
@@ -41,7 +41,7 @@ export class AuthMiddleware {
    * Express middleware to authenticate requests
    */
   authenticate() {
-    return (req: Request, res: Response, next: NextFunction) => {
+    return (req: AuthRequest, res: Response, next: NextFunction) => {
       const authHeader = req.headers.authorization;
 
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -74,7 +74,7 @@ export class AuthMiddleware {
    * Middleware to authorize specific roles
    */
   authorize(allowedRoles: Array<'human' | 'agent' | 'admin'>) {
-    return (req: Request, res: Response, next: NextFunction) => {
+    return (req: AuthRequest, res: Response, next: NextFunction) => {
       if (!req.user) {
         const response: APIResponse = {
           success: false,
@@ -84,7 +84,7 @@ export class AuthMiddleware {
         return res.status(401).json(response);
       }
 
-      if (!allowedRoles.includes(req.user.role as 'human' | 'agent' | 'admin')) {
+      if (!allowedRoles.includes(req.user.role)) {
         const response: APIResponse = {
           success: false,
           error: 'Insufficient permissions',

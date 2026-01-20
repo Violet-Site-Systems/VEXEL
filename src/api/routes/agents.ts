@@ -2,10 +2,10 @@
  * Agent management routes
  */
 
-import { Router, Request, Response } from 'express';
+import { Router, Response } from 'express';
 import { AuthMiddleware } from '../middleware/auth';
 import { ActionVerificationMiddleware } from '../middleware/actionVerification';
-import { APIResponse, ActionType } from '../types';
+import { APIResponse, ActionType, AuthRequest } from '../types';
 import { RuntimeStatus } from '../../types';
 
 export function createAgentRoutes(
@@ -28,7 +28,7 @@ export function createAgentRoutes(
    *       401:
    *         description: Unauthorized
    */
-  router.get('/', authMiddleware.authenticate(), (req: Request, res: Response) => {
+  router.get('/', authMiddleware.authenticate(), (req: AuthRequest, res: Response) => {
     const response: APIResponse = {
       success: true,
       data: {
@@ -60,7 +60,7 @@ export function createAgentRoutes(
    *       404:
    *         description: Agent not found
    */
-  router.get('/:agentId', authMiddleware.authenticate(), (req: Request, res: Response) => {
+  router.get('/:agentId', authMiddleware.authenticate(), (req: AuthRequest, res: Response) => {
     const { agentId } = req.params;
     const response: APIResponse = {
       success: true,
@@ -110,7 +110,7 @@ export function createAgentRoutes(
     '/',
     authMiddleware.authenticate(),
     authMiddleware.authorize(['human', 'admin']),
-    (req: Request, res: Response) => {
+    (req: AuthRequest, res: Response) => {
       // Set actionType for verification
       req.body.actionType = ActionType.AGENT_CREATE;
       return actionVerification.verify()(req, res, () => {
@@ -191,7 +191,7 @@ export function createAgentRoutes(
   router.put(
     '/:agentId/status',
     authMiddleware.authenticate(),
-    (req: Request, res: Response) => {
+    (req: AuthRequest, res: Response) => {
       req.body.actionType = ActionType.STATUS_CHANGE;
       return actionVerification.verify()(req, res, () => {
         try {
