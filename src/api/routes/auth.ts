@@ -134,8 +134,16 @@ export function createAuthRoutes(authMiddleware: AuthMiddleware): Router {
    */
   router.post('/refresh', authMiddleware.authenticate(), (req: AuthRequest, res: Response) => {
     try {
-      const user = req.user as JWTPayload;
-      const newToken = authMiddleware.generateToken(user);
+      if (!req.user) {
+        const response: APIResponse = {
+          success: false,
+          error: 'User not authenticated',
+          timestamp: new Date(),
+        };
+        return res.status(401).json(response);
+      }
+
+      const newToken = authMiddleware.generateToken(req.user);
 
       const response: APIResponse = {
         success: true,
