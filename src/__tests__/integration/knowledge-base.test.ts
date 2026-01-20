@@ -2,9 +2,9 @@
  * Tests for Knowledge Base Migration to Arweave
  */
 
-import { ArweaveClient } from '../arweave-client';
-import { MemoryExtractor } from '../memory-extractor';
-import { KnowledgeBaseMigration } from '../migration';
+import { ArweaveClient } from '../../knowledge-base/arweave-client';
+import { MemoryExtractor } from '../../knowledge-base/memory-extractor';
+import { KnowledgeBaseMigration } from '../../knowledge-base/migration';
 import { DatabaseClient } from '../../database/client';
 import { AgentRepository } from '../../database/repository';
 import {

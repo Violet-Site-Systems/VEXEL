@@ -1,5 +1,5 @@
-import { IPFSClient } from '../ipfs/client';
-import { AgentMetadata } from '../types';
+import { IPFSClient } from '../../ipfs/client';
+import { AgentMetadata } from '../../types';
 
 describe('IPFSClient', () => {
   let client: IPFSClient;
