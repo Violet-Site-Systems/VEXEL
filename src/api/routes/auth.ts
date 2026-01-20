@@ -4,7 +4,7 @@
 
 import { Router, Request, Response } from 'express';
 import { AuthMiddleware } from '../middleware/auth';
-import { APIResponse, JWTPayload } from '../types';
+import { APIResponse, JWTPayload, AuthRequest } from '../types';
 
 export function createAuthRoutes(authMiddleware: AuthMiddleware): Router {
   const router = Router();
@@ -106,12 +106,12 @@ export function createAuthRoutes(authMiddleware: AuthMiddleware): Router {
    *       401:
    *         description: Invalid token
    */
-  router.get('/verify', authMiddleware.authenticate(), (req: Request, res: Response) => {
+  router.get('/verify', authMiddleware.authenticate(), (req: AuthRequest, res: Response) => {
     const response: APIResponse = {
       success: true,
       data: {
         valid: true,
-        user: (req as any).user,
+        user: req.user,
       },
       timestamp: new Date(),
     };
@@ -132,9 +132,9 @@ export function createAuthRoutes(authMiddleware: AuthMiddleware): Router {
    *       401:
    *         description: Invalid token
    */
-  router.post('/refresh', authMiddleware.authenticate(), (req: Request, res: Response) => {
+  router.post('/refresh', authMiddleware.authenticate(), (req: AuthRequest, res: Response) => {
     try {
-      const user = (req as any).user as JWTPayload;
+      const user = req.user as JWTPayload;
       const newToken = authMiddleware.generateToken(user);
 
       const response: APIResponse = {
