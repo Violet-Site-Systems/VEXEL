@@ -1,4 +1,4 @@
-import { Vexel } from './index';
+import { Vexel } from '../../index';
 import * as path from 'path';
 import * as fs from 'fs';
 
