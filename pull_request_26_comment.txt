@@ -1,0 +1,1 @@
+Closing this PR to start fresh. Code review identified significant gaps between documented implementation and actual changes. Will open a new PR with complete implementation of license compliance layer.
