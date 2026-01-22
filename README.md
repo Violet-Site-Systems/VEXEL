@@ -319,7 +319,27 @@ Contributions are welcome! Please:
 
 ## 📄 License
 
-License to be determined in Phase 4.One or more of the Sustainability Code Licenses will be chosen; https://github.com/Violet-Site-Systems/BGINEXUS-Sustainability-Code-Licenses
+**VEXEL uses a triple license approach with BGINexus Sustainability Code Licenses:**
+
+- **[SBL-1.0](./LICENSE-SBL-1.0.md)** - Social Benefit License (public good, accessibility, anti-discrimination)
+- **[EAL-1.0](./LICENSE-EAL-1.0.md)** - Ethical AI License (fair, transparent, accountable AI/agent systems)
+- **[CGL-1.0](./LICENSE-CGL-1.0.md)** - Community Governance License (democratic, inclusive governance)
+
+This combination ensures VEXEL serves as ethical, community-controlled identity infrastructure that prioritizes human rights, digital sovereignty, and the collective good.
+
+**Key Commitments:**
+- ✅ Identity as a public good and human right
+- ✅ Fair and non-discriminatory AI/agent systems
+- ✅ Democratic community governance
+- ✅ Privacy protection and transparency
+- ✅ Accessibility for all users
+- ❌ No surveillance violating human rights
+- ❌ No discriminatory uses
+- ❌ No exploitation of vulnerable populations
+
+**For Details:** See [License Research](./docs/LICENSE_RESEARCH.md), [License Matrix](./docs/LICENSE_MATRIX.md), and [Licensing Rationale](./docs/LICENSING.md)
+
+**Source:** [BGINexus Sustainability Code Licenses](https://github.com/Violet-Site-Systems/BGINEXUS-Sustainability-Code-Licenses)
 
 ## 🙏 Acknowledgments
 

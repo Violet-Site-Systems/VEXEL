@@ -33,7 +33,21 @@
     "web3"
   ],
   "author": "VEXEL Team",
-  "license": "ISC",
+  "license": "SEE LICENSE FILES",
+  "licenses": [
+    {
+      "type": "SBL-1.0",
+      "url": "https://github.com/Violet-Site-Systems/BGINEXUS-Sustainability-Code-Licenses/blob/main/SBL-1.0.md"
+    },
+    {
+      "type": "EAL-1.0",
+      "url": "https://github.com/Violet-Site-Systems/BGINEXUS-Sustainability-Code-Licenses/blob/main/EAL-1.0.md"
+    },
+    {
+      "type": "CGL-1.0",
+      "url": "https://github.com/Violet-Site-Systems/BGINEXUS-Sustainability-Code-Licenses/blob/main/CGL-1.0.md"
+    }
+  ],
   "dependencies": {
     "@grpc/grpc-js": "^1.14.3",
     "@grpc/proto-loader": "^0.8.0",
