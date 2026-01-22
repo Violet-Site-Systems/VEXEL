@@ -111,7 +111,7 @@ export function createAuthRoutes(authMiddleware: AuthMiddleware): Router {
       success: true,
       data: {
         valid: true,
-        user: req.user,
+        user: (req as any).user,
       },
       timestamp: new Date(),
     };
@@ -134,7 +134,7 @@ export function createAuthRoutes(authMiddleware: AuthMiddleware): Router {
    */
   router.post('/refresh', authMiddleware.authenticate(), (req: Request, res: Response) => {
     try {
-      const user = req.user as JWTPayload;
+      const user = (req as any).user as JWTPayload;
       const newToken = authMiddleware.generateToken(user);
 
       const response: APIResponse = {

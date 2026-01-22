@@ -3,8 +3,8 @@
  * Validates and authorizes actions before execution
  */
 
-import { Request, Response, NextFunction } from 'express';
-import { ActionType, ActionRequest, ActionVerificationResult, APIResponse } from '../types';
+import { Response, NextFunction } from 'express';
+import { AuthRequest, ActionType, ActionRequest, ActionVerificationResult, APIResponse } from '../types';
 
 export class ActionVerificationMiddleware {
   /**
@@ -96,7 +96,7 @@ export class ActionVerificationMiddleware {
    * Express middleware for action verification
    */
   verify() {
-    return (req: Request, res: Response, next: NextFunction) => {
+    return (req: AuthRequest, res: Response, next: NextFunction) => {
       if (!req.user) {
         const response: APIResponse = {
           success: false,
@@ -117,7 +117,7 @@ export class ActionVerificationMiddleware {
 
       const verificationResult = this.verifyAction(
         req.user.userId,
-        req.user.role as 'human' | 'agent' | 'admin',
+        req.user.role,
         actionRequest.type,
         actionRequest.agentId,
         actionRequest.payload
