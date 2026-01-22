@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: SBL-1.0 AND EAL-1.0 AND CGL-1.0
 /**
  * Cross-Platform Communication Adapter
  * Integrates gRPC, discovery, handshake, and context for agent-to-agent communication

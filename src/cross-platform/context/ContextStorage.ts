@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: SBL-1.0 AND EAL-1.0 AND CGL-1.0
 /**
  * Context Preservation Storage
  * Stores and retrieves conversation context for agent-to-agent communication

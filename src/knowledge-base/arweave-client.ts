@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: SBL-1.0 AND EAL-1.0 AND CGL-1.0
 import Arweave from 'arweave';
 import { JWKInterface } from 'arweave/node/lib/wallet';
 import * as dotenv from 'dotenv';

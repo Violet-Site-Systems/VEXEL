@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: SBL-1.0 AND EAL-1.0 AND CGL-1.0
 /**
  * Sentinel Agent - Key Management System
  * Derives, imports, exports, and manages cryptographic keys

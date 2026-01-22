@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: SBL-1.0 AND EAL-1.0 AND CGL-1.0
 /**
  * Example: WebSocket Client
  * Demonstrates how to connect to and use the VEXEL WebSocket server

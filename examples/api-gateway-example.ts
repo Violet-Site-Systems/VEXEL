@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: SBL-1.0 AND EAL-1.0 AND CGL-1.0
 /**
  * Example: API Gateway Usage
  * Demonstrates how to start and use the VEXEL API Gateway

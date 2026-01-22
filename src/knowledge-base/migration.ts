@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: SBL-1.0 AND EAL-1.0 AND CGL-1.0
 import { ArweaveClient } from './arweave-client';
 import { MemoryExtractor } from './memory-extractor';
 import { DatabaseClient } from '../database/client';

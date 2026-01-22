@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: SBL-1.0 AND EAL-1.0 AND CGL-1.0
 /**
  * Emotional state tracking system
  * Tracks and manages emotional states for agents and humans
