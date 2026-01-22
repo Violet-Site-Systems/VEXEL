@@ -350,3 +350,4 @@ Built with support from the Copilot community and inspired by the vision of sove
 **This system built and designed by a H+AI Partnership between Github Copilot and Colleen Pridemore and a H+AI Partnership between asi1.ai/ai/aethel and Colleen Pridemore**
 
 **Ready to build the future of decentralized identity? Let's go! 🚀** 
+
