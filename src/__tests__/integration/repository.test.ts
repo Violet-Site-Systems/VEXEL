@@ -1,6 +1,6 @@
-import { DatabaseClient } from '../database/client';
-import { AgentRepository } from '../database/repository';
-import { RuntimeStatus } from '../types';
+import { DatabaseClient } from '../../database/client';
+import { AgentRepository } from '../../database/repository';
+import { RuntimeStatus } from '../../types';
 
 describe('AgentRepository', () => {
   let db: DatabaseClient;

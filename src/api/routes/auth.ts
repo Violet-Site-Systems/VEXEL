@@ -134,7 +134,8 @@ export function createAuthRoutes(authMiddleware: AuthMiddleware): Router {
    */
   router.post('/refresh', authMiddleware.authenticate(), (req: AuthRequest, res: Response) => {
     try {
-      if (!req.user) {
+      const user = req.user;
+      if (!user) {
         const response: APIResponse = {
           success: false,
           error: 'User not authenticated',
@@ -143,7 +144,7 @@ export function createAuthRoutes(authMiddleware: AuthMiddleware): Router {
         return res.status(401).json(response);
       }
 
-      const newToken = authMiddleware.generateToken(req.user);
+      const newToken = authMiddleware.generateToken(user);
 
       const response: APIResponse = {
         success: true,
