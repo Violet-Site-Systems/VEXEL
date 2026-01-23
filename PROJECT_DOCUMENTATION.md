@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/6c4a269e-a810-4c67-88ce-cd0219ecaa0b" alt="VEXEL Logo - Digital Identity for LIFE and Beyond" width="400"/>
+  <img src="https://github.com/Violet-Site-Systems/VEXEL/blob/main/assets/vexel-logo.png" alt="VEXEL Logo - Digital Identity for LIFE and Beyond" width="400"/>
 </div>
 
 # VEXEL Project Documentation
