@@ -4,25 +4,25 @@ This guide explains how to use the refurbished roadmap issue templates to create
 
 ## Quick Overview
 
-We've created **21 comprehensive issue templates** covering:
+We've created **22 comprehensive issue templates** covering:
 - **P0 (Critical):** 5 issues - Build/Package Correctness & CI
 - **P1 (High):** 11 issues - Security & API/Dashboard + Wallet Security
-- **P2 (Medium):** 5 issues - HAAP, Contracts, Documentation
+- **P2 (Medium):** 6 issues - HAAP, Contracts, Documentation
 
 ## Files Created
 
 1. **`REFURBISHED_ROADMAP_ISSUES.md`** - Full issue templates (1,794 lines)
-   - Complete markdown content for all 21 issues
+   - Complete markdown content for all 22 issues
    - Copy-paste ready for manual issue creation
    - Includes tasks, acceptance criteria, dependencies
 
 2. **`REFURBISHED_ISSUES_SUMMARY.md`** - Quick reference (247 lines)
-   - Overview of all 21 issues
+   - Overview of all 22 issues
    - Priority breakdown and implementation plan
    - Success metrics
 
 3. **`scripts/create-refurbished-issues.sh`** - Automated creation script (1,054 lines)
-   - Creates all 21 issues via GitHub CLI
+   - Creates all 22 issues via GitHub CLI
    - Applies correct labels automatically
    - Single command execution
 
@@ -67,17 +67,17 @@ cd /path/to/VEXEL
 
 **What happens:**
 1. Script verifies GitHub CLI is installed and authenticated
-2. Creates all 21 issues in order (P0 → P1 → P2)
+2. Creates all 22 issues in order (P0 → P1 → P2)
 3. Applies correct labels to each issue
 4. Shows progress as each issue is created
 5. Displays summary when complete
 
-**Time:** ~1-2 minutes for all 21 issues
+**Time:** ~1-2 minutes for all 22 issues
 
 ### Expected Output
 
 ```
-Creating 21 Refurbished Roadmap Issues...
+Creating 22 Refurbished Roadmap Issues...
 
 Creating issue: [P0] Establish Build Boundaries for DB/IPFS/Knowledge-Base Modules
 ✓ Created
@@ -88,13 +88,13 @@ Creating issue: [P0] Document Multi-Package Repository Structure and Guidelines
 ...
 
 ============================================
-✓ All 21 Refurbished Roadmap Issues Created!
+✓ All 22 Refurbished Roadmap Issues Created!
 ============================================
 
 Summary:
   - P0 (Critical): 5 issues
   - P1 (High): 11 issues
-  - P2 (Medium): 5 issues
+  - P2 (Medium): 6 issues
 ```
 
 ## Method 2: Manual Creation
@@ -118,9 +118,9 @@ If you prefer to create issues manually or want to customize them:
    - Add labels as specified in the template
    - Submit the issue
 
-4. **Repeat for all 21 issues**
+4. **Repeat for all 22 issues**
 
-**Time:** ~15-20 minutes for all 21 issues
+**Time:** ~15-20 minutes for all 22 issues
 
 ### Tips for Manual Creation
 

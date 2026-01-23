@@ -4,7 +4,7 @@
 
 set -e
 
-echo "Creating 21 Refurbished Roadmap Issues..."
+echo "Creating 22 Refurbished Roadmap Issues..."
 echo ""
 
 # Check if gh CLI is installed
@@ -291,7 +291,7 @@ EOF
     "P0,testing,ci,database,postgres"
 
 echo ""
-echo "P0 Issues Created (5/21)"
+echo "P0 Issues Created (5/22)"
 echo "Creating P1 Security & API Issues..."
 echo ""
 
@@ -686,7 +686,7 @@ EOF
     "P1,security,dashboard,cors"
 
 echo ""
-echo "P1 Security & API Issues Created (14/21)"
+echo "P1 Security & API Issues Created (14/22)"
 echo "Creating P1 Wallet Security Issues..."
 echo ""
 
@@ -773,7 +773,7 @@ EOF
     "P1,security,wallet,api"
 
 echo ""
-echo "Wallet Security Issues Created (16/21)"
+echo "Wallet Security Issues Created (16/22)"
 echo "Creating P2 HAAP, Contracts, Documentation Issues..."
 echo ""
 
@@ -1039,13 +1039,13 @@ EOF
 
 echo ""
 echo "============================================"
-echo "✓ All 21 Refurbished Roadmap Issues Created!"
+echo "✓ All 22 Refurbished Roadmap Issues Created!"
 echo "============================================"
 echo ""
 echo "Summary:"
 echo "  - P0 (Critical): 5 issues"
 echo "  - P1 (High): 11 issues"
-echo "  - P2 (Medium): 5 issues"
+echo "  - P2 (Medium): 6 issues"
 echo ""
 echo "Next steps:"
 echo "1. Review issues in the repository"

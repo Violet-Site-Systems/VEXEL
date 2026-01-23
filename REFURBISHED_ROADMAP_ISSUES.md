@@ -1,6 +1,6 @@
 # Refurbished Roadmap Issues - Technical Debt & Refinements
 
-This document provides the exact content for creating 21 GitHub issues for VEXEL refurbishment tasks focused on build correctness, security hardening, and production readiness.
+This document provides the exact content for creating 22 GitHub issues for VEXEL refurbishment tasks focused on build correctness, security hardening, and production readiness.
 
 ---
 
@@ -1766,10 +1766,10 @@ Save each issue's markdown content to separate files in an `issues/` directory, 
 
 ## Summary
 
-**Total Issues:** 21
+**Total Issues:** 22
 - **P0 (Critical):** 5 issues - Build/Package Correctness & CI
 - **P1 (High):** 11 issues - Security & API/Dashboard + Wallet Security
-- **P2 (Medium):** 5 issues - HAAP, Contracts, Documentation
+- **P2 (Medium):** 6 issues - HAAP, Contracts, Documentation
 
 **Priority Order:**
 1. P0 issues (foundation)
@@ -1788,7 +1788,7 @@ Save each issue's markdown content to separate files in an `issues/` directory, 
 
 1. Review and customize issue content as needed
 2. Choose issue creation method (web UI, CLI, or script)
-3. Create all 21 issues in the repository
+3. Create all 22 issues in the repository
 4. Set up project board to track progress
 5. Prioritize and assign issues to team members
 6. Begin implementation starting with P0 issues

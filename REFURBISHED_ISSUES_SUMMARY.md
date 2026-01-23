@@ -1,17 +1,17 @@
 # Refurbished Roadmap Issues - Summary
 
-This document provides a quick reference for the 21 refurbished roadmap issues created for VEXEL technical debt and production readiness.
+This document provides a quick reference for the 22 refurbished roadmap issues created for VEXEL technical debt and production readiness.
 
 ---
 
 ## Overview
 
-**Total Issues:** 21 (spanning build correctness, security, API/dashboard, wallet security, HAAP, contracts, and documentation)
+**Total Issues:** 22 (spanning build correctness, security, API/dashboard, wallet security, HAAP, contracts, and documentation)
 
 **Priority Breakdown:**
 - **P0 (Critical):** 5 issues - Build/Package Correctness & CI
 - **P1 (High):** 11 issues - Security & API/Dashboard + Wallet Security  
-- **P2 (Medium):** 5 issues - HAAP, Contracts, Documentation
+- **P2 (Medium):** 6 issues - HAAP, Contracts, Documentation
 
 ---
 
@@ -71,7 +71,7 @@ These are **high-priority security vulnerabilities** and **core API functionalit
 
 ---
 
-## P2 - HAAP, Contracts, Documentation (5 Issues)
+## P2 - HAAP, Contracts, Documentation (6 Issues)
 
 **Medium-priority enhancements** for protocol integrity and developer experience.
 
