@@ -1,4 +1,4 @@
-import { create, IPFSHTTPClient } from 'kubo-rpc-client';
+import { create, KuboRPCClient } from 'kubo-rpc-client';
 import { createHash } from 'crypto';
 import * as dotenv from 'dotenv';
 import { AgentMetadata } from '../types';
@@ -9,7 +9,7 @@ dotenv.config();
  * IPFS client for storing and retrieving agent metadata
  */
 export class IPFSClient {
-  private client: IPFSHTTPClient;
+  private client: KuboRPCClient;
 
   constructor() {
     const host = process.env.IPFS_HOST || '127.0.0.1';

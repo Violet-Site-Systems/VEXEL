@@ -1,0 +1,24 @@
+{
+  "name": "@vexel/ipfs",
+  "version": "1.0.0",
+  "description": "IPFS module for VEXEL - Decentralized storage client for agent metadata",
+  "main": "../../dist/ipfs/index.js",
+  "types": "../../dist/ipfs/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "jest --config jest.config.js",
+    "clean": "rm -rf ../../dist/ipfs"
+  },
+  "keywords": ["vexel", "ipfs", "storage"],
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "kubo-rpc-client": "^5.0.3",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.9"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
