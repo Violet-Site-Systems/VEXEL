@@ -69,6 +69,7 @@
   "dependencies": {
     "@grpc/grpc-js": "^1.14.3",
     "@grpc/proto-loader": "^0.8.0",
+    "@openzeppelin/contracts-upgradeable": ">=4.9.6",
     "arweave": "^1.15.7",
     "cors": "^2.8.5",
     "did-jwt": "^8.0.18",
@@ -103,5 +104,8 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "@openzeppelin/contracts-upgradeable": ">=4.9.6"
   }
 }
