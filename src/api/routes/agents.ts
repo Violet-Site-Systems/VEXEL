@@ -249,7 +249,7 @@ export function createAgentRoutes(
    *       200:
    *         description: Agent capabilities
    */
-  router.get('/:agentId/capabilities', authMiddleware.authenticate(), (req: Request, res: Response) => {
+  router.get('/:agentId/capabilities', authMiddleware.authenticate(), (req: AuthRequest, res: Response) => {
     const { agentId } = req.params;
     const response: APIResponse = {
       success: true,

@@ -6,6 +6,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { SentinelAgent } from './sentinel';
 import { PolicyContext } from './types';
+import { JWTPayload } from '../../api/types';
 
 /**
  * Extend Express Request type to include user
@@ -14,7 +15,7 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
     interface Request {
-      user?: { userId: string; role: string };
+      user?: JWTPayload;
     }
   }
 }
