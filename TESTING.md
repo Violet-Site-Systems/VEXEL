@@ -1,6 +1,26 @@
-# Testing Guide for VEXEL Phase 1.2
+# Testing Guide for VEXEL
 
-This guide covers testing the PostgreSQL schema, IPFS integration, and data layer functionality.
+This guide covers the VEXEL testing infrastructure, including unit tests, integration tests, and how to run them effectively.
+
+## Test Infrastructure
+
+VEXEL uses a two-tier testing approach:
+
+### Unit Tests
+- **Location**: Throughout `src/` directory (e.g., `src/wallet/WalletManager.test.ts`)
+- **Configuration**: `jest.unit.config.js`
+- **Purpose**: Fast, isolated tests with mocked external dependencies
+- **Run time**: ~10-30 seconds
+- **No external dependencies required**
+
+### Integration Tests
+- **Location**: `src/__tests__/integration/`
+- **Configuration**: `jest.integration.config.js`
+- **Purpose**: End-to-end tests with real database, IPFS, and external services
+- **Run time**: ~1-5 minutes
+- **Requires**: PostgreSQL, IPFS (optional)
+
+This separation allows developers to run fast unit tests frequently during development, while integration tests validate system behavior with real infrastructure.
 
 ## Prerequisites
 
@@ -65,11 +85,36 @@ npm run migrate
 
 ## Running Tests
 
-### Run All Tests
+VEXEL uses separate test configurations for unit and integration tests to optimize developer workflow:
+
+- **Unit tests**: Fast tests without external dependencies (mocked database, IPFS, etc.)
+- **Integration tests**: Tests requiring real database, IPFS node, or other external services
+
+### Run Unit Tests (Recommended for Development)
 
 ```bash
 npm test
 ```
+
+This runs only unit tests using `jest.unit.config.js`. These tests are fast and don't require external services.
+
+### Run Integration Tests
+
+```bash
+npm run test:integration
+```
+
+This runs integration tests using `jest.integration.config.js`. These tests require:
+- PostgreSQL database running and configured
+- IPFS node (optional, depending on tests)
+
+### Run All Tests (Unit + Integration)
+
+```bash
+npm run test:all
+```
+
+This runs both unit and integration tests sequentially.
 
 ### Run Tests with Coverage
 
@@ -77,16 +122,16 @@ npm test
 npm run test:coverage
 ```
 
-This generates a coverage report in the `coverage/` directory.
+This generates a coverage report in the `coverage/` directory (unit tests only).
 
 ### Run Specific Test File
 
 ```bash
-# Repository tests
-npm test -- repository.test.ts
+# Unit test file
+npm test -- WalletManager.test.ts
 
-# IPFS tests
-npm test -- ipfs.test.ts
+# Integration test file
+npm run test:integration -- repository.test.ts
 ```
 
 ### Run Tests in Watch Mode
@@ -95,7 +140,26 @@ npm test -- ipfs.test.ts
 npm run test:watch
 ```
 
-This automatically reruns tests when files change.
+This automatically reruns unit tests when files change.
+
+## Test Configuration Files
+
+### jest.unit.config.js
+- Runs all tests in `src/` directory
+- **Excludes** `src/__tests__/integration/` directory
+- Fast execution (no external services)
+- Used by: `npm test`, `npm run test:coverage`, `npm run test:watch`
+
+### jest.integration.config.js
+- Runs **only** tests in `src/__tests__/integration/`
+- Requires external services (database, IPFS)
+- Longer timeout (30 seconds default)
+- Used by: `npm run test:integration`
+
+### jest.config.js
+- Base configuration file
+- Used when Jest is run without a specific config
+- Runs all tests (not recommended for development)
 
 ## Manual Testing
 
