@@ -3,7 +3,7 @@
  * Anomaly detection, alerts, and security event tracking
  */
 
-import { SecurityAlert, SecurityMetric, SessionToken } from './types';
+import { SecurityAlert, SecurityMetric } from './types';
 
 /**
  * Security monitoring and alerting system

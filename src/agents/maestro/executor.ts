@@ -4,12 +4,10 @@
  */
 
 import {
-  Workflow,
   WorkflowExecution,
   WorkflowStep,
   ExecutionError,
   RetryPolicy,
-  ErrorHandler,
   RollbackEntry,
   ChoreographyEvent,
 } from './types';
@@ -246,7 +244,7 @@ export class WorkflowExecutor {
   /**
    * Handle step failure with error handler
    */
-  private async handleStepFailure(execution: WorkflowExecution, step: WorkflowStep, error: ExecutionError): Promise<void> {
+  private async handleStepFailure(execution: WorkflowExecution, step: WorkflowStep, _error: ExecutionError): Promise<void> {
     // Record the failure
     const stepExec = execution.stepExecutions.get(step.id);
     if (stepExec) {
@@ -285,7 +283,7 @@ export class WorkflowExecutor {
       }
 
       return { success: false, error, duration: 0 };
-    } catch (handlerError) {
+    } catch {
       return { success: false, error, duration: 0 };
     }
   }

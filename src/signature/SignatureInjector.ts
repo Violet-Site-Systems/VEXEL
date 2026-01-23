@@ -62,7 +62,7 @@ export class SignatureInjector {
     try {
       const recoveredAddress = ethers.verifyMessage(message, signature);
       return recoveredAddress.toLowerCase() === expectedAddress.toLowerCase();
-    } catch (error) {
+    } catch {
       return false;
     }
   }

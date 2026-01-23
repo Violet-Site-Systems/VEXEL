@@ -14,7 +14,7 @@ import { Signature, VerificationResult, SignatureAlgorithm } from './types';
 export class CryptoOperations {
   private algorithm: SignatureAlgorithm;
 
-  constructor(algorithm: SignatureAlgorithm = 'ECDSA') {
+  constructor(_algorithm: SignatureAlgorithm = 'ECDSA') {
     // Use ECDSA for reliable cross-platform support
     this.algorithm = 'ECDSA';
   }

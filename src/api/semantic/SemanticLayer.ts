@@ -95,7 +95,7 @@ export class SemanticLayer {
   private humanizeMessageFromCopilot(
     message: string,
     emotionalState?: EmotionalState,
-    context?: TranslationContext
+    _context?: TranslationContext
   ): string {
     let humanized = message;
 

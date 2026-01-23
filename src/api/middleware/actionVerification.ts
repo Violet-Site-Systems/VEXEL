@@ -14,8 +14,8 @@ export class ActionVerificationMiddleware {
     userId: string,
     role: 'human' | 'agent' | 'admin',
     actionType: ActionType,
-    agentId: string,
-    payload: Record<string, any>
+    _agentId: string,
+    _payload: Record<string, any>
   ): ActionVerificationResult {
     // Admin can do everything
     if (role === 'admin') {

@@ -108,7 +108,7 @@ export class CrossPlatformAdapter extends EventEmitter {
         this.grpcServer!.bindAsync(
           bindAddress,
           grpc.ServerCredentials.createInsecure(),
-          (error, port) => {
+          (error, _port) => {
             if (error) {
               reject(error);
             } else {

@@ -81,7 +81,7 @@ export class BadgeMinter {
     };
 
     const badgeMetadata = { ...defaultMetadata, ...metadata };
-    const tokenURI = this.createTokenURI(badgeMetadata);
+    const _tokenURI = this.createTokenURI(badgeMetadata);
 
     // In a real implementation, this would interact with a deployed smart contract
     // For now, we simulate the minting process
