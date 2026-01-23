@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/6c4a269e-a810-4c67-88ce-cd0219ecaa0b" alt="VEXEL Logo - Digital Identity for LIFE and Beyond" width="400"/>
+</div>
+
 # VEXEL 🌉
 
 A DID Bridge Layer creating sovereign interoperability across distributed identity systems. VEXEL connects decentralized identifiers across ecosystems, enabling autonomous, cross-chain identity bridging while preserving cryptographic sovereignty. No gatekeepers. No middlemen. Just pure, protocol-level identity freedom.
