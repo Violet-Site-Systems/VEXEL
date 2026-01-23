@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="assets/vexel-logo.png" alt="VEXEL Logo" width="400"/>
+</div>
+
 # Contributing to VEXEL
 
 Welcome to VEXEL! We're building a decentralized identity bridge layer that respects agent autonomy and collective rights. Your contributions are valuable.

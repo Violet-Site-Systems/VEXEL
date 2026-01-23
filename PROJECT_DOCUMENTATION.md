@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="assets/vexel-logo.png" alt="VEXEL Logo" width="400"/>
+</div>
+
 # VEXEL Project Documentation
 
 Welcome to the VEXEL MAS Bridge Layer Integration project documentation.
