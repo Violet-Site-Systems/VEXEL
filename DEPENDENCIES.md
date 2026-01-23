@@ -13,7 +13,7 @@ This document verifies that all VEXEL dependencies are compatible with AGPL v3 l
 | ethers.js | ^6.0.0 | MIT | Blockchain | ✅ |
 | express | ^4.18.0 | MIT | Web Framework | ✅ |
 | socket.io | ^4.5.0 | MIT | WebSocket | ✅ |
-| jest | ^29.0.0 | MIT | Testing | ✅ |
+| jest | ^29.7.0 | MIT | Testing | ✅ |
 | typescript | ^5.0.0 | Apache 2.0 | Language | ✅ |
 | @grpc/grpc-js | ^1.8.0 | Apache 2.0 | RPC | ✅ |
 | pg | ^8.10.0 | MIT/BSD | Database | ✅ |
@@ -24,7 +24,7 @@ This document verifies that all VEXEL dependencies are compatible with AGPL v3 l
 | did-resolver | ^4.0.0 | Apache 2.0 | DID | ✅ |
 | @types/express | ^4.17.0 | MIT | Types | ✅ |
 | @types/node | ^18.0.0 | MIT | Types | ✅ |
-| ts-jest | ^29.0.0 | MIT | Testing | ✅ |
+| ts-jest | ^29.4.6 | MIT | Testing | ✅ |
 | @grpc/proto-loader | ^0.8.0 | Apache 2.0 | RPC | ✅ |
 
 ### ⚠️ Conditional (Review Required)
@@ -60,11 +60,11 @@ vexel@1.0.0
 │
 └─ devDependencies
    ├── typescript@5.x (Apache 2.0) ✅
-   ├── jest@29.x (MIT) ✅
-   ├── ts-jest@29.x (MIT) ✅
+   ├── jest@29.7.0 (MIT) ✅
+   ├── ts-jest@29.4.6 (MIT) ✅
    ├── @types/express@4.x (MIT) ✅
    ├── @types/node@18.x (MIT) ✅
-   ├── @types/jest@29.x (MIT) ✅
+   ├── @types/jest@29.5.14 (MIT) ✅
    └── ...all other @types/* (MIT) ✅
 ```
 
@@ -323,7 +323,16 @@ For questions about dependency licensing:
 
 ---
 
-**Last Updated**: January 19, 2026  
+**Last Updated**: January 23, 2025  
 **Status**: ✅ VERIFIED  
-**Verified By**: VEXEL Licensing Team  
+**Verified By**: VEXEL Licensing Team
+
+## Testing Framework Versions
+
+For detailed information about Jest and ts-jest version compatibility, see [Jest Version Compatibility](docs/JEST_VERSION_COMPATIBILITY.md).
+
+**Key versions:**
+- Jest: ^29.7.0 (official ts-jest support)
+- ts-jest: ^29.4.6 (compatible with Jest 29.x)
+- @types/jest: ^29.5.14 (matches Jest 29.x)  
 
