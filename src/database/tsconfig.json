@@ -5,11 +5,12 @@
     "outDir": "../../dist/database",
     "declarationDir": "../../dist/database",
     "baseUrl": ".",
+    "rootDir": "..",
     "paths": {
       "../types": ["../types/index"]
     }
   },
-  "include": ["./**/*", "../types/**/*"],
+  "include": ["./**/*", "../types/index.ts"],
   "exclude": ["**/*.test.ts", "**/__tests__/**"],
   "references": []
 }

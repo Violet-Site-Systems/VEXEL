@@ -23,5 +23,6 @@ module.exports = {
   },
   moduleNameMapper: {
     '^../types$': '<rootDir>/../types'
-  }
+  },
+  modulePaths: ['<rootDir>/node_modules', '<rootDir>/../../node_modules']
 };

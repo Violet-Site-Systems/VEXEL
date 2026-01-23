@@ -5,11 +5,12 @@
     "outDir": "../../dist/ipfs",
     "declarationDir": "../../dist/ipfs",
     "baseUrl": ".",
+    "rootDir": "..",
     "paths": {
       "../types": ["../types/index"]
     }
   },
-  "include": ["./**/*", "../types/**/*"],
+  "include": ["./**/*", "../types/index.ts"],
   "exclude": ["**/*.test.ts", "**/__tests__/**"],
   "references": []
 }
