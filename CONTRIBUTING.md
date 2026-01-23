@@ -373,7 +373,7 @@ Other approaches?
 ⚠️ **DO NOT** post security vulnerabilities in public issues!
 
 Instead:
-1. Email: security@vexel.dev
+1. Email: security@accessvexel.com
 2. Include: description, reproduction, impact
 3. Allow 90 days for patch + disclosure
 
