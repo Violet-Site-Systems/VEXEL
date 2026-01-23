@@ -105,6 +105,6 @@
     "typescript": "^5.9.3"
   },
   "overrides": {
-    "@openzeppelin/contracts-upgradeable": ">=4.9.6"
+    "@openzeppelin/contracts-upgradeable": "5.4.0"
   }
 }
