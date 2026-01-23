@@ -1,0 +1,24 @@
+{
+  "name": "@vexel/knowledge-base",
+  "version": "1.0.0",
+  "description": "Knowledge Base module for VEXEL - Arweave migration and memory extraction",
+  "main": "../../dist/knowledge-base/index.js",
+  "types": "../../dist/knowledge-base/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "jest --config jest.config.js",
+    "clean": "rm -rf ../../dist/knowledge-base"
+  },
+  "keywords": ["vexel", "arweave", "knowledge-base", "migration"],
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "arweave": "^1.15.7",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.9"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

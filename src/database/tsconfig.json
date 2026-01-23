@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "../../dist/database",
+    "declarationDir": "../../dist/database",
+    "baseUrl": ".",
+    "rootDir": "..",
+    "paths": {
+      "../types": ["../types/index"]
+    }
+  },
+  "include": ["./**/*", "../types/index.ts"],
+  "exclude": ["**/*.test.ts", "**/__tests__/**"],
+  "references": []
+}

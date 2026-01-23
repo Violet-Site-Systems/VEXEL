@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "../../dist/knowledge-base",
+    "declarationDir": "../../dist/knowledge-base",
+    "baseUrl": ".",
+    "rootDir": "..",
+    "paths": {
+      "../types": ["../types/index"],
+      "../database/*": ["../database/*"]
+    }
+  },
+  "include": ["./**/*", "../types/index.ts", "../database/**/*.ts"],
+  "exclude": ["**/*.test.ts", "**/__tests__/**", "../database/**/*.test.ts"],
+  "references": [
+    { "path": "../database" }
+  ]
+}

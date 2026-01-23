@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "../../dist/ipfs",
+    "declarationDir": "../../dist/ipfs",
+    "baseUrl": ".",
+    "rootDir": "..",
+    "paths": {
+      "../types": ["../types/index"]
+    }
+  },
+  "include": ["./**/*", "../types/index.ts"],
+  "exclude": ["**/*.test.ts", "**/__tests__/**"],
+  "references": []
+}
