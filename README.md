@@ -158,6 +158,8 @@ npx ts-node examples/haap-example.ts
 - **[Implementation Steps](./IMPLEMENTATION_STEPS.md)** - Detailed breakdown of all phases
 - **[Project Documentation](./PROJECT_DOCUMENTATION.md)** - Complete project guide
 - **[GitHub Issues Guide](./GITHUB_ISSUES_GUIDE.md)** - Ready-to-use issue templates
+- **[Refurbished Roadmap Issues](./REFURBISHED_ROADMAP_ISSUES.md)** - 21 technical debt and refinement issues
+- **[Refurbished Issues Summary](./REFURBISHED_ISSUES_SUMMARY.md)** - Quick reference for refurbishment tasks
 
 ## 🧪 Testing
 
