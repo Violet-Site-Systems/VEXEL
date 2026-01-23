@@ -1,0 +1,1026 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@arbitrum/nitro-contracts": {
+      "name": "@arbitrum/nitro-contracts",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@offchainlabs/upgrade-executor",
+        "@openzeppelin/contracts",
+        "@openzeppelin/contracts-upgradeable"
+      ],
+      "effects": [
+        "@chainlink/contracts"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@arbitrum/nitro-contracts"
+      ],
+      "fixAvailable": {
+        "name": "@chainlink/contracts",
+        "version": "1.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@chainlink/contracts": {
+      "name": "@chainlink/contracts",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@arbitrum/nitro-contracts",
+        "@eth-optimism/contracts"
+      ],
+      "effects": [],
+      "range": ">=0.4.2",
+      "nodes": [
+        "node_modules/@chainlink/contracts"
+      ],
+      "fixAvailable": {
+        "name": "@chainlink/contracts",
+        "version": "1.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@eth-optimism/contracts": {
+      "name": "@eth-optimism/contracts",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@eth-optimism/core-utils",
+        "@ethersproject/abstract-provider",
+        "@ethersproject/abstract-signer",
+        "ethers"
+      ],
+      "effects": [
+        "@chainlink/contracts"
+      ],
+      "range": "<=0.0.0-alpha.1 || >=0.0.2-alpha.0",
+      "nodes": [
+        "node_modules/@chainlink/contracts/node_modules/@eth-optimism/contracts"
+      ],
+      "fixAvailable": {
+        "name": "@chainlink/contracts",
+        "version": "1.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@eth-optimism/core-utils": {
+      "name": "@eth-optimism/core-utils",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abi",
+        "@ethersproject/abstract-provider",
+        "@ethersproject/contracts",
+        "@ethersproject/hash",
+        "@ethersproject/providers",
+        "@ethersproject/transactions"
+      ],
+      "effects": [
+        "@eth-optimism/contracts"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@eth-optimism/core-utils"
+      ],
+      "fixAvailable": {
+        "name": "@chainlink/contracts",
+        "version": "1.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@ethersproject/abi": {
+      "name": "@ethersproject/abi",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/hash"
+      ],
+      "effects": [
+        "@ethersproject/contracts",
+        "@nomicfoundation/hardhat-verify",
+        "ethers",
+        "hardhat"
+      ],
+      "range": "5.0.10 - 5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/abi"
+      ],
+      "fixAvailable": false
+    },
+    "@ethersproject/abstract-provider": {
+      "name": "@ethersproject/abstract-provider",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/transactions"
+      ],
+      "effects": [
+        "@eth-optimism/contracts",
+        "@eth-optimism/core-utils",
+        "@ethersproject/abstract-signer",
+        "@ethersproject/contracts"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@ethersproject/abstract-provider"
+      ],
+      "fixAvailable": false
+    },
+    "@ethersproject/abstract-signer": {
+      "name": "@ethersproject/abstract-signer",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abstract-provider"
+      ],
+      "effects": [
+        "@eth-optimism/contracts",
+        "@ethersproject/hash"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@ethersproject/abstract-signer"
+      ],
+      "fixAvailable": false
+    },
+    "@ethersproject/contracts": {
+      "name": "@ethersproject/contracts",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abi",
+        "@ethersproject/abstract-provider",
+        "@ethersproject/abstract-signer",
+        "@ethersproject/transactions"
+      ],
+      "effects": [
+        "@eth-optimism/core-utils",
+        "ethers"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@ethersproject/contracts"
+      ],
+      "fixAvailable": {
+        "name": "@chainlink/contracts",
+        "version": "1.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@ethersproject/hash": {
+      "name": "@ethersproject/hash",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abstract-signer"
+      ],
+      "effects": [
+        "@eth-optimism/core-utils",
+        "@ethersproject/abi",
+        "@ethersproject/providers",
+        "@ethersproject/wallet",
+        "@ethersproject/wordlists",
+        "ethers"
+      ],
+      "range": "5.0.6 - 5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/hash"
+      ],
+      "fixAvailable": false
+    },
+    "@ethersproject/hdnode": {
+      "name": "@ethersproject/hdnode",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abstract-signer",
+        "@ethersproject/signing-key",
+        "@ethersproject/transactions",
+        "@ethersproject/wordlists"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@ethersproject/hdnode"
+      ],
+      "fixAvailable": true
+    },
+    "@ethersproject/json-wallets": {
+      "name": "@ethersproject/json-wallets",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abstract-signer",
+        "@ethersproject/hdnode",
+        "@ethersproject/transactions"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@ethersproject/json-wallets"
+      ],
+      "fixAvailable": true
+    },
+    "@ethersproject/providers": {
+      "name": "@ethersproject/providers",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abstract-provider",
+        "@ethersproject/abstract-signer",
+        "@ethersproject/hash",
+        "@ethersproject/transactions"
+      ],
+      "effects": [
+        "@eth-optimism/core-utils"
+      ],
+      "range": "<=5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/providers"
+      ],
+      "fixAvailable": {
+        "name": "@chainlink/contracts",
+        "version": "1.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@ethersproject/signing-key": {
+      "name": "@ethersproject/signing-key",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "elliptic"
+      ],
+      "effects": [
+        "@ethersproject/hdnode",
+        "@ethersproject/transactions",
+        "@ethersproject/wallet",
+        "ethers"
+      ],
+      "range": "<=5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/signing-key"
+      ],
+      "fixAvailable": false
+    },
+    "@ethersproject/transactions": {
+      "name": "@ethersproject/transactions",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/signing-key"
+      ],
+      "effects": [
+        "@eth-optimism/core-utils",
+        "@ethersproject/abstract-provider",
+        "@ethersproject/contracts",
+        "@ethersproject/json-wallets",
+        "@ethersproject/providers"
+      ],
+      "range": "<=5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/transactions"
+      ],
+      "fixAvailable": false
+    },
+    "@ethersproject/wallet": {
+      "name": "@ethersproject/wallet",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abstract-provider",
+        "@ethersproject/abstract-signer",
+        "@ethersproject/hash",
+        "@ethersproject/hdnode",
+        "@ethersproject/json-wallets",
+        "@ethersproject/signing-key",
+        "@ethersproject/transactions",
+        "@ethersproject/wordlists"
+      ],
+      "effects": [],
+      "range": "<=5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/wallet"
+      ],
+      "fixAvailable": true
+    },
+    "@ethersproject/wordlists": {
+      "name": "@ethersproject/wordlists",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/hash"
+      ],
+      "effects": [
+        "@ethersproject/hdnode"
+      ],
+      "range": "5.0.8 - 5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/wordlists"
+      ],
+      "fixAvailable": true
+    },
+    "@nomicfoundation/hardhat-chai-matchers": {
+      "name": "@nomicfoundation/hardhat-chai-matchers",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@nomicfoundation/hardhat-ethers",
+        "hardhat"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-chai-matchers"
+      ],
+      "fixAvailable": true
+    },
+    "@nomicfoundation/hardhat-ethers": {
+      "name": "@nomicfoundation/hardhat-ethers",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "hardhat"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-chai-matchers",
+        "@nomicfoundation/hardhat-ignition-ethers",
+        "@nomicfoundation/hardhat-toolbox"
+      ],
+      "range": "3.0.7 || 3.1.0 - 3.1.3",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-ethers"
+      ],
+      "fixAvailable": false
+    },
+    "@nomicfoundation/hardhat-ignition": {
+      "name": "@nomicfoundation/hardhat-ignition",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@nomicfoundation/hardhat-verify",
+        "@nomicfoundation/ignition-core",
+        "hardhat"
+      ],
+      "effects": [],
+      "range": "<=0.15.16",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-ignition"
+      ],
+      "fixAvailable": true
+    },
+    "@nomicfoundation/hardhat-ignition-ethers": {
+      "name": "@nomicfoundation/hardhat-ignition-ethers",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@nomicfoundation/hardhat-ethers",
+        "@nomicfoundation/hardhat-ignition",
+        "@nomicfoundation/ignition-core",
+        "hardhat"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-toolbox"
+      ],
+      "range": "<=0.15.17",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-ignition-ethers"
+      ],
+      "fixAvailable": false
+    },
+    "@nomicfoundation/hardhat-network-helpers": {
+      "name": "@nomicfoundation/hardhat-network-helpers",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "ethereumjs-util",
+        "hardhat"
+      ],
+      "effects": [],
+      "range": "<=1.1.2",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-network-helpers"
+      ],
+      "fixAvailable": true
+    },
+    "@nomicfoundation/hardhat-toolbox": {
+      "name": "@nomicfoundation/hardhat-toolbox",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@nomicfoundation/hardhat-chai-matchers",
+        "@nomicfoundation/hardhat-ethers",
+        "@nomicfoundation/hardhat-ignition-ethers",
+        "@nomicfoundation/hardhat-network-helpers",
+        "@nomicfoundation/hardhat-verify",
+        "@typechain/hardhat",
+        "hardhat",
+        "hardhat-gas-reporter",
+        "solidity-coverage"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-toolbox"
+      ],
+      "fixAvailable": false
+    },
+    "@nomicfoundation/hardhat-verify": {
+      "name": "@nomicfoundation/hardhat-verify",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@ethersproject/abi",
+        "hardhat",
+        "undici"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-ignition",
+        "@nomicfoundation/hardhat-toolbox"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-verify"
+      ],
+      "fixAvailable": false
+    },
+    "@nomicfoundation/ignition-core": {
+      "name": "@nomicfoundation/ignition-core",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "lodash"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-ignition",
+        "@nomicfoundation/hardhat-ignition-ethers"
+      ],
+      "range": "<=0.15.15",
+      "nodes": [
+        "node_modules/@nomicfoundation/ignition-core"
+      ],
+      "fixAvailable": false
+    },
+    "@offchainlabs/upgrade-executor": {
+      "name": "@offchainlabs/upgrade-executor",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@openzeppelin/contracts",
+        "@openzeppelin/contracts-upgradeable"
+      ],
+      "effects": [
+        "@arbitrum/nitro-contracts"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@offchainlabs/upgrade-executor"
+      ],
+      "fixAvailable": {
+        "name": "@chainlink/contracts",
+        "version": "1.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@openzeppelin/contracts": {
+      "name": "@openzeppelin/contracts",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1091839,
+          "name": "@openzeppelin/contracts",
+          "dependency": "@openzeppelin/contracts",
+          "title": "GovernorCompatibilityBravo may trim proposal calldata",
+          "url": "https://github.com/advisories/GHSA-93hq-5wgc-jc82",
+          "severity": "high",
+          "cwe": [
+            "CWE-20"
+          ],
+          "cvss": {
+            "score": 8.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": ">=4.3.0 <4.8.3"
+        },
+        {
+          "source": 1094526,
+          "name": "@openzeppelin/contracts",
+          "dependency": "@openzeppelin/contracts",
+          "title": "OpenZeppelin Contracts vulnerable to Improper Escaping of Output",
+          "url": "https://github.com/advisories/GHSA-g4vp-m682-qqmp",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-116"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": ">=4.0.0 <4.9.3"
+        },
+        {
+          "source": 1094706,
+          "name": "@openzeppelin/contracts",
+          "dependency": "@openzeppelin/contracts",
+          "title": "OpenZeppelin Contracts using MerkleProof multiproofs may allow proving arbitrary leaves for specific trees",
+          "url": "https://github.com/advisories/GHSA-wprv-93r4-jj2p",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-354"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": ">=4.7.0 <4.9.2"
+        },
+        {
+          "source": 1094945,
+          "name": "@openzeppelin/contracts",
+          "dependency": "@openzeppelin/contracts",
+          "title": "OpenZeppelin Contracts TransparentUpgradeableProxy clashing selector calls may not be delegated",
+          "url": "https://github.com/advisories/GHSA-mx2q-35m2-x2rh",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-436"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": ">=3.2.0 <4.8.3"
+        },
+        {
+          "source": 1094980,
+          "name": "@openzeppelin/contracts",
+          "dependency": "@openzeppelin/contracts",
+          "title": "OpenZeppelin Contracts's governor proposal creation may be blocked by frontrunning",
+          "url": "https://github.com/advisories/GHSA-5h3x-9wvq-w4m2",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-862"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": ">=4.3.0 <4.9.1"
+        },
+        {
+          "source": 1111248,
+          "name": "@openzeppelin/contracts",
+          "dependency": "@openzeppelin/contracts",
+          "title": "OpenZeppelin Contracts base64 encoding may read from potentially dirty memory",
+          "url": "https://github.com/advisories/GHSA-9vx6-7xxf-x967",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-125"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H"
+          },
+          "range": ">=4.5.0 <4.9.6"
+        }
+      ],
+      "effects": [
+        "@arbitrum/nitro-contracts",
+        "@offchainlabs/upgrade-executor"
+      ],
+      "range": "3.2.0 - 4.9.5",
+      "nodes": [
+        "node_modules/@arbitrum/nitro-contracts/node_modules/@openzeppelin/contracts",
+        "node_modules/@offchainlabs/upgrade-executor/node_modules/@openzeppelin/contracts"
+      ],
+      "fixAvailable": {
+        "name": "@chainlink/contracts",
+        "version": "1.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@openzeppelin/contracts-upgradeable": {
+      "name": "@openzeppelin/contracts-upgradeable",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1091838,
+          "name": "@openzeppelin/contracts-upgradeable",
+          "dependency": "@openzeppelin/contracts-upgradeable",
+          "title": "GovernorCompatibilityBravo may trim proposal calldata",
+          "url": "https://github.com/advisories/GHSA-93hq-5wgc-jc82",
+          "severity": "high",
+          "cwe": [
+            "CWE-20"
+          ],
+          "cvss": {
+            "score": 8.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": ">=4.3.0 <4.8.3"
+        },
+        {
+          "source": 1094525,
+          "name": "@openzeppelin/contracts-upgradeable",
+          "dependency": "@openzeppelin/contracts-upgradeable",
+          "title": "OpenZeppelin Contracts vulnerable to Improper Escaping of Output",
+          "url": "https://github.com/advisories/GHSA-g4vp-m682-qqmp",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-116"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": ">=4.0.0 <4.9.3"
+        },
+        {
+          "source": 1094705,
+          "name": "@openzeppelin/contracts-upgradeable",
+          "dependency": "@openzeppelin/contracts-upgradeable",
+          "title": "OpenZeppelin Contracts using MerkleProof multiproofs may allow proving arbitrary leaves for specific trees",
+          "url": "https://github.com/advisories/GHSA-wprv-93r4-jj2p",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-354"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": ">=4.7.0 <4.9.2"
+        },
+        {
+          "source": 1094944,
+          "name": "@openzeppelin/contracts-upgradeable",
+          "dependency": "@openzeppelin/contracts-upgradeable",
+          "title": "OpenZeppelin Contracts TransparentUpgradeableProxy clashing selector calls may not be delegated",
+          "url": "https://github.com/advisories/GHSA-mx2q-35m2-x2rh",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-436"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": ">=3.2.0 <4.8.3"
+        },
+        {
+          "source": 1094979,
+          "name": "@openzeppelin/contracts-upgradeable",
+          "dependency": "@openzeppelin/contracts-upgradeable",
+          "title": "OpenZeppelin Contracts's governor proposal creation may be blocked by frontrunning",
+          "url": "https://github.com/advisories/GHSA-5h3x-9wvq-w4m2",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-862"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": ">=4.3.0 <4.9.1"
+        },
+        {
+          "source": 1111245,
+          "name": "@openzeppelin/contracts-upgradeable",
+          "dependency": "@openzeppelin/contracts-upgradeable",
+          "title": "OpenZeppelin Contracts base64 encoding may read from potentially dirty memory",
+          "url": "https://github.com/advisories/GHSA-9vx6-7xxf-x967",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-125"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H"
+          },
+          "range": ">=4.5.0 <4.9.6"
+        }
+      ],
+      "effects": [],
+      "range": "<=4.9.5",
+      "nodes": [
+        "node_modules/@arbitrum/nitro-contracts/node_modules/@openzeppelin/contracts-upgradeable",
+        "node_modules/@offchainlabs/upgrade-executor/node_modules/@openzeppelin/contracts-upgradeable"
+      ],
+      "fixAvailable": true
+    },
+    "@sentry/node": {
+      "name": "@sentry/node",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "cookie"
+      ],
+      "effects": [
+        "hardhat"
+      ],
+      "range": "4.0.0-beta.0 - 7.74.2-alpha.1",
+      "nodes": [
+        "node_modules/@sentry/node"
+      ],
+      "fixAvailable": false
+    },
+    "@typechain/hardhat": {
+      "name": "@typechain/hardhat",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "hardhat"
+      ],
+      "effects": [],
+      "range": ">=6.1.0",
+      "nodes": [
+        "node_modules/@typechain/hardhat"
+      ],
+      "fixAvailable": true
+    },
+    "cookie": {
+      "name": "cookie",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1103907,
+          "name": "cookie",
+          "dependency": "cookie",
+          "title": "cookie accepts cookie name, path, and domain with out of bounds characters",
+          "url": "https://github.com/advisories/GHSA-pxg6-pf52-xh8x",
+          "severity": "low",
+          "cwe": [
+            "CWE-74"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<0.7.0"
+        }
+      ],
+      "effects": [
+        "@sentry/node"
+      ],
+      "range": "<0.7.0",
+      "nodes": [
+        "node_modules/cookie"
+      ],
+      "fixAvailable": false
+    },
+    "elliptic": {
+      "name": "elliptic",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1112030,
+          "name": "elliptic",
+          "dependency": "elliptic",
+          "title": "Elliptic Uses a Cryptographic Primitive with a Risky Implementation",
+          "url": "https://github.com/advisories/GHSA-848j-6mx2-7j84",
+          "severity": "low",
+          "cwe": [
+            "CWE-1240"
+          ],
+          "cvss": {
+            "score": 5.6,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L"
+          },
+          "range": "<=6.6.1"
+        }
+      ],
+      "effects": [
+        "@ethersproject/signing-key",
+        "secp256k1"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/elliptic"
+      ],
+      "fixAvailable": false
+    },
+    "ethereum-cryptography": {
+      "name": "ethereum-cryptography",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "secp256k1"
+      ],
+      "effects": [
+        "ethereumjs-util"
+      ],
+      "range": "0.1.0 - 0.1.3",
+      "nodes": [
+        "node_modules/ethereum-cryptography"
+      ],
+      "fixAvailable": true
+    },
+    "ethereumjs-util": {
+      "name": "ethereumjs-util",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "ethereum-cryptography"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-network-helpers"
+      ],
+      "range": "4.5.1 || 5.2.1 || 6.2.1 || >=7.0.3",
+      "nodes": [
+        "node_modules/ethereumjs-util"
+      ],
+      "fixAvailable": true
+    },
+    "ethers": {
+      "name": "ethers",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abi",
+        "@ethersproject/abstract-provider",
+        "@ethersproject/abstract-signer",
+        "@ethersproject/contracts",
+        "@ethersproject/hash",
+        "@ethersproject/hdnode",
+        "@ethersproject/json-wallets",
+        "@ethersproject/providers",
+        "@ethersproject/signing-key",
+        "@ethersproject/transactions",
+        "@ethersproject/wallet",
+        "@ethersproject/wordlists"
+      ],
+      "effects": [
+        "@eth-optimism/contracts"
+      ],
+      "range": "5.0.0-beta.119 - 5.8.0",
+      "nodes": [
+        "node_modules/@chainlink/contracts/node_modules/ethers"
+      ],
+      "fixAvailable": {
+        "name": "@chainlink/contracts",
+        "version": "1.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "hardhat": {
+      "name": "hardhat",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@ethersproject/abi",
+        "@sentry/node",
+        "undici"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-chai-matchers",
+        "@nomicfoundation/hardhat-ethers",
+        "@nomicfoundation/hardhat-network-helpers",
+        "@nomicfoundation/hardhat-toolbox",
+        "@nomicfoundation/hardhat-verify",
+        "@typechain/hardhat",
+        "hardhat-gas-reporter",
+        "solidity-coverage"
+      ],
+      "range": "0.1.0-rc.0 - 3.0.0-next.32",
+      "nodes": [
+        "node_modules/hardhat"
+      ],
+      "fixAvailable": false
+    },
+    "hardhat-gas-reporter": {
+      "name": "hardhat-gas-reporter",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abi",
+        "hardhat"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-toolbox"
+      ],
+      "range": ">=2.0.0-alpha.0",
+      "nodes": [
+        "node_modules/hardhat-gas-reporter"
+      ],
+      "fixAvailable": false
+    },
+    "lodash": {
+      "name": "lodash",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1112455,
+          "name": "lodash",
+          "dependency": "lodash",
+          "title": "Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions",
+          "url": "https://github.com/advisories/GHSA-xxjr-mmjv-4gpg",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+          },
+          "range": ">=4.0.0 <=4.17.22"
+        }
+      ],
+      "effects": [
+        "@nomicfoundation/ignition-core"
+      ],
+      "range": "4.0.0 - 4.17.21",
+      "nodes": [
+        "node_modules/lodash"
+      ],
+      "fixAvailable": false
+    },
+    "secp256k1": {
+      "name": "secp256k1",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "elliptic"
+      ],
+      "effects": [
+        "ethereum-cryptography"
+      ],
+      "range": ">=2.0.0",
+      "nodes": [
+        "node_modules/secp256k1"
+      ],
+      "fixAvailable": true
+    },
+    "solidity-coverage": {
+      "name": "solidity-coverage",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "hardhat"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-toolbox"
+      ],
+      "range": ">=0.8.0-beta.0",
+      "nodes": [
+        "node_modules/solidity-coverage"
+      ],
+      "fixAvailable": false
+    },
+    "undici": {
+      "name": "undici",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1112496,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "Undici has an unbounded decompression chain in HTTP responses on Node.js Fetch API via Content-Encoding leads to resource exhaustion",
+          "url": "https://github.com/advisories/GHSA-g9mf-h72j-4rw9",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 5.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<6.23.0"
+        }
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-verify",
+        "hardhat"
+      ],
+      "range": "<6.23.0",
+      "nodes": [
+        "node_modules/undici"
+      ],
+      "fixAvailable": false
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 21,
+      "moderate": 17,
+      "high": 2,
+      "critical": 0,
+      "total": 40
+    },
+    "dependencies": {
+      "prod": 212,
+      "dev": 1171,
+      "optional": 33,
+      "peer": 291,
+      "peerOptional": 0,
+      "total": 1384
+    }
+  }
+}

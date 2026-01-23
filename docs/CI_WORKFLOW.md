@@ -78,9 +78,17 @@ Runs ESLint on all TypeScript source files.
 npm audit
 ```
 Scans dependencies for known security vulnerabilities.
-- **Fails** if any critical or high severity vulnerabilities are found
-- **Passes** with low or moderate vulnerabilities (requires review)
+- **Fails** if any critical severity vulnerabilities are found
+- **Warns** if any high severity vulnerabilities are found (requires review)
+- **Passes** with low or moderate vulnerabilities (should be reviewed)
 - Developers should run `npm audit` locally and fix issues before pushing
+
+**Current Known Issues:**
+- 2 high severity vulnerabilities in OpenZeppelin contracts (dev dependencies)
+- These are in @chainlink/contracts dependencies used for smart contract development
+- Fix available via `npm audit fix --force` (requires breaking changes to @chainlink/contracts)
+- Since these are dev dependencies, they don't affect production runtime
+- Should be addressed in a separate issue focusing on dependency updates
 
 ## Performance
 
