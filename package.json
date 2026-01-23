@@ -55,7 +55,6 @@
   "dependencies": {
     "@grpc/grpc-js": "^1.14.3",
     "@grpc/proto-loader": "^0.8.0",
-    "arweave": "^1.15.7",
     "cors": "^2.8.5",
     "did-jwt": "^8.0.18",
     "did-resolver": "^4.1.0",
