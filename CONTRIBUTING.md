@@ -379,19 +379,31 @@ Instead:
 
 ## Development Guide
 
+For comprehensive development guidance, see:
+- **[DEVELOPMENT_GUIDE.md](./DEVELOPMENT_GUIDE.md)** - Complete development workflows
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System architecture and design
+- **[PACKAGE_GUIDELINES.md](./PACKAGE_GUIDELINES.md)** - Package creation guidelines
+- **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)** - Quick command reference
+
 ### Project Structure
 
 ```
-src/
-├── api/              # REST/WebSocket API gateway
-├── cross-platform/   # Agent-to-agent communication
-├── wallet/           # Polygon wallet management
-├── signature/        # Cryptographic signing
-├── badge/            # VERIFIED_HUMAN badge system
-├── haap/             # Human attestation protocol
-├── database/         # PostgreSQL schema & queries
-├── utils/            # Utility functions
-└── index.ts          # Main exports
+VEXEL/
+├── src/                    # Core library
+│   ├── api/                # REST/WebSocket API gateway
+│   ├── cross-platform/     # Agent-to-agent communication
+│   ├── wallet/             # Polygon wallet management
+│   ├── signature/          # Cryptographic signing
+│   ├── badge/              # VERIFIED_HUMAN badge system
+│   ├── haap/               # Human attestation protocol
+│   ├── database/           # PostgreSQL module (independent)
+│   ├── ipfs/               # IPFS module (independent)
+│   ├── knowledge-base/     # Arweave module (independent)
+│   ├── utils/              # Utility functions
+│   └── index.ts            # Main exports
+├── dashboard/              # React monitoring dashboard
+├── subgraph/               # TheGraph indexing service
+└── contracts/              # Solidity smart contracts
 ```
 
 ### Key Modules
