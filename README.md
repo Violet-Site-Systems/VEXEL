@@ -153,13 +153,30 @@ npx ts-node examples/haap-example.ts
 
 ## 📖 Documentation
 
-- **[HAAP Protocol](./docs/HAAP_PROTOCOL.md)** - Human Attestation and Authentication Protocol guide
-- **[Setup Guide](./docs/WALLET_SETUP_GUIDE.md)** - Complete API reference and setup instructions
+### 🚀 Getting Started (< 30 minutes)
+- **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)** - Quick start guide and command reference
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System architecture and design principles
+- **[DIAGRAMS.md](./DIAGRAMS.md)** - 📊 Visual architecture diagrams (Mermaid)
+- **[DEVELOPMENT_GUIDE.md](./DEVELOPMENT_GUIDE.md)** - Development workflows and best practices
+- **[PACKAGE_GUIDELINES.md](./PACKAGE_GUIDELINES.md)** - When to create packages vs. add to existing
+
+### 📚 Core Documentation
+- **[BUILD_BOUNDARIES_SUMMARY.md](./BUILD_BOUNDARIES_SUMMARY.md)** - Build system and module structure
+- **[MODULE_ARCHITECTURE.md](./MODULE_ARCHITECTURE.md)** - Module dependencies and organization
+- **[TESTING.md](./TESTING.md)** - Testing strategies and practices
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Contribution guidelines and workflow
+
+### 🔧 Technical Guides
+- **[HAAP Protocol](./docs/HAAP_PROTOCOL.md)** - Human Attestation and Authentication Protocol
+- **[Setup Guide](./docs/WALLET_SETUP_GUIDE.md)** - Complete API reference and setup
+- **[API Gateway](./docs/API_GATEWAY.md)** - REST and WebSocket API documentation
+- **[Cross-Platform Integration](./docs/CROSS_PLATFORM_INTEGRATION.md)** - Agent-to-agent communication
+
+### 📋 Project Management
 - **[Implementation Steps](./IMPLEMENTATION_STEPS.md)** - Detailed breakdown of all phases
 - **[Project Documentation](./PROJECT_DOCUMENTATION.md)** - Complete project guide
 - **[GitHub Issues Guide](./GITHUB_ISSUES_GUIDE.md)** - Ready-to-use issue templates
-- **[Refurbished Roadmap Issues](./REFURBISHED_ROADMAP_ISSUES.md)** - 22 technical debt and refinement issues
-- **[Refurbished Issues Summary](./REFURBISHED_ISSUES_SUMMARY.md)** - Quick reference for refurbishment tasks
+- **[Refurbished Roadmap Issues](./REFURBISHED_ROADMAP_ISSUES.md)** - Technical debt and refinement issues
 
 ## 🧪 Testing
 
