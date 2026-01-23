@@ -164,6 +164,7 @@ npx ts-node examples/haap-example.ts
 - **[BUILD_BOUNDARIES_SUMMARY.md](./BUILD_BOUNDARIES_SUMMARY.md)** - Build system and module structure
 - **[MODULE_ARCHITECTURE.md](./MODULE_ARCHITECTURE.md)** - Module dependencies and organization
 - **[TESTING.md](./TESTING.md)** - Testing strategies and practices
+- **[Jest Version Compatibility](./docs/JEST_VERSION_COMPATIBILITY.md)** - Jest/ts-jest version alignment guide
 - **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Contribution guidelines and workflow
 
 ### 🔧 Technical Guides
@@ -191,8 +192,9 @@ npm run test:coverage
 npm test -- src/haap
 ```
 
-**Test Results:** 80 tests passing ✅  
-**Coverage:** High coverage across all modules
+**Test Results:** 234 tests passing ✅  
+**Coverage:** High coverage across all modules  
+**Framework:** Jest 29.7.0 + ts-jest 29.4.6 (officially compatible versions)
 
 ## 📦 Project Structure
 
