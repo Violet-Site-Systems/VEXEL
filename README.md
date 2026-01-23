@@ -156,6 +156,7 @@ npx ts-node examples/haap-example.ts
 ### 🚀 Getting Started (< 30 minutes)
 - **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)** - Quick start guide and command reference
 - **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System architecture and design principles
+- **[DIAGRAMS.md](./DIAGRAMS.md)** - 📊 Visual architecture diagrams (Mermaid)
 - **[DEVELOPMENT_GUIDE.md](./DEVELOPMENT_GUIDE.md)** - Development workflows and best practices
 - **[PACKAGE_GUIDELINES.md](./PACKAGE_GUIDELINES.md)** - When to create packages vs. add to existing
 

@@ -1,5 +1,7 @@
 # VEXEL Architecture Guide
 
+> **📊 Visual Diagrams**: See [DIAGRAMS.md](./DIAGRAMS.md) for interactive Mermaid diagrams of the architecture
+
 ## Table of Contents
 
 1. [Overview](#overview)
@@ -68,6 +70,8 @@ VEXEL/
 ```
 
 ### Package Relationships
+
+> **📊 Interactive Diagram**: See [Package Structure Diagram](./DIAGRAMS.md#package-structure-diagram) for a detailed Mermaid visualization
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
