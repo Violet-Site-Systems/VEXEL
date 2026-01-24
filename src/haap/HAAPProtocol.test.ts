@@ -30,7 +30,10 @@ describe('HAAPProtocol', () => {
     });
   });
 
-  afterAll(() => {
+  afterAll(async () => {
+    // Clean up wallet manager provider
+    await walletManager.destroy();
+    
     if (fs.existsSync(testWalletDir)) {
       fs.rmSync(testWalletDir, { recursive: true, force: true });
     }
