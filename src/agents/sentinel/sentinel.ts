@@ -31,7 +31,7 @@ export class SentinelAgent {
       alertWebhookUrl: config.alertWebhookUrl,
     };
 
-    this.crypto = new CryptoOperations('Ed25519');
+    this.crypto = new CryptoOperations();
     this.keyManager = new KeyManager(this.config.keyRotationDays);
     this.policyEngine = new PolicyEngine(true);
     this.monitor = new SecurityMonitor(

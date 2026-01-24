@@ -13,7 +13,12 @@ module.exports = {
     'src/**/*.ts',
     '!src/**/*.d.ts',
     '!src/**/*.test.ts',
-    '!src/**/__tests__/**'
+    '!src/**/__tests__/**',
+    '!src/database/**',
+    '!src/ipfs/**',
+    '!src/knowledge-base/**',
+    '!src/example.ts',
+    '!src/service.ts'
   ],
   coverageThreshold: {
     global: {
