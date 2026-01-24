@@ -272,10 +272,12 @@ export class HandshakeProtocol extends EventEmitter {
       this.pendingChallenges.delete(challengeKey);
 
       // Schedule session cleanup
-      const timer = setTimeout(() => {
-        this.cleanupSession(response.sessionId!);
-      }, this.config.sessionTimeout);
-      this.sessionTimers.set(response.sessionId, timer);
+      if (response.sessionId) {
+        const timer = setTimeout(() => {
+          this.cleanupSession(response.sessionId!);
+        }, this.config.sessionTimeout);
+        this.sessionTimers.set(response.sessionId, timer);
+      }
 
       console.log(`Handshake verified: Session ${response.sessionId}`);
 

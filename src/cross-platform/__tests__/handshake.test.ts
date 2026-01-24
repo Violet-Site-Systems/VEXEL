@@ -58,12 +58,22 @@ describe('HandshakeProtocol', () => {
     });
 
     it('should emit handshake initiation event', async () => {
-      const eventPromise = new Promise((resolve) => {
+      const eventPromise = new Promise((resolve, reject) => {
+        // Set a timeout to prevent hanging
+        const timeout = setTimeout(() => {
+          reject(new Error('Event timeout: HANDSHAKE_INITIATED was not emitted'));
+        }, 5000);
+
         handshakeProtocol.on(CrossPlatformEvent.HANDSHAKE_INITIATED, (data) => {
-          expect(data.event).toBe(CrossPlatformEvent.HANDSHAKE_INITIATED);
-          expect(data.data.initiatorAgentId).toBe('agent-initiator');
-          expect(data.data.targetAgentId).toBe('agent-target');
-          resolve(true);
+          clearTimeout(timeout);
+          try {
+            expect(data.event).toBe(CrossPlatformEvent.HANDSHAKE_INITIATED);
+            expect(data.data.initiatorAgentId).toBe('agent-initiator');
+            expect(data.data.targetAgentId).toBe('agent-target');
+            resolve(true);
+          } catch (error) {
+            reject(error);
+          }
         });
       });
 
@@ -105,11 +115,21 @@ describe('HandshakeProtocol', () => {
     });
 
     it('should emit handshake completion event', async () => {
-      const eventPromise = new Promise((resolve) => {
+      const eventPromise = new Promise((resolve, reject) => {
+        // Set a timeout to prevent hanging
+        const timeout = setTimeout(() => {
+          reject(new Error('Event timeout: HANDSHAKE_COMPLETED was not emitted'));
+        }, 5000);
+
         handshakeProtocol.on(CrossPlatformEvent.HANDSHAKE_COMPLETED, (data) => {
-          expect(data.event).toBe(CrossPlatformEvent.HANDSHAKE_COMPLETED);
-          expect(data.data.sessionId).toBeDefined();
-          resolve(true);
+          clearTimeout(timeout);
+          try {
+            expect(data.event).toBe(CrossPlatformEvent.HANDSHAKE_COMPLETED);
+            expect(data.data.sessionId).toBeDefined();
+            resolve(true);
+          } catch (error) {
+            reject(error);
+          }
         });
       });
 
