@@ -21,6 +21,11 @@ describe('WalletManager', () => {
     }
   });
 
+  afterAll(async () => {
+    // Clean up wallet manager provider
+    await walletManager.destroy();
+  });
+
   describe('createWallet', () => {
     it('should create a new wallet for an agent', async () => {
       const walletInfo = await walletManager.createWallet(testAgentId);
