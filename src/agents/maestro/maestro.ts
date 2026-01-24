@@ -315,7 +315,7 @@ export class MaestroAgent {
         } else {
           this.registry.updateAgentStatus(agent.id, 'offline');
         }
-      } catch (error) {
+      } catch {
         this.registry.updateAgentStatus(agent.id, 'offline');
       }
     }

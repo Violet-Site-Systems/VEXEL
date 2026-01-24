@@ -6,14 +6,16 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { SentinelAgent } from './sentinel';
 import { PolicyContext } from './types';
+import { JWTPayload } from '../../api/types';
 
 /**
  * Extend Express Request type to include user
  */
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
     interface Request {
-      user?: { userId: string; role: string };
+      user?: JWTPayload;
     }
   }
 }
@@ -33,11 +35,11 @@ export function createSentinelMiddleware(agent: SentinelAgent) {
           return res.status(401).json({ error: 'Missing authorization header' });
         }
 
-        const token = authHeader.substring(7);
+        const _token = authHeader.substring(7);
         // Token verification would be done here with agent.verify()
-        (req as any).user = { userId: 'verified-user', role: 'agent' };
+        req.user = { userId: 'verified-user', role: 'agent' };
         next();
-      } catch (error) {
+      } catch {
         res.status(401).json({ error: 'Invalid signature' });
       }
     },
@@ -73,7 +75,7 @@ export function createSentinelMiddleware(agent: SentinelAgent) {
         }
 
         next();
-      } catch (error) {
+      } catch {
         res.status(500).json({ error: 'Policy evaluation failed' });
       }
     },

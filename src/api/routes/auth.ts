@@ -82,7 +82,7 @@ export function createAuthRoutes(authMiddleware: AuthMiddleware): Router {
       };
 
       res.json(response);
-    } catch (error) {
+    } catch {
       const response: APIResponse = {
         success: false,
         error: 'Authentication failed',
@@ -147,7 +147,7 @@ export function createAuthRoutes(authMiddleware: AuthMiddleware): Router {
       };
 
       res.json(response);
-    } catch (error) {
+    } catch {
       const response: APIResponse = {
         success: false,
         error: 'Token refresh failed',

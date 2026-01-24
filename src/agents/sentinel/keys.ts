@@ -18,7 +18,7 @@ export class KeyManager {
   private keyRotationDays: number;
 
   constructor(keyRotationDays: number = 90) {
-    this.crypto = new CryptoOperations('Ed25519');
+    this.crypto = new CryptoOperations();
     this.keyRotationDays = keyRotationDays;
   }
 

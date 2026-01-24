@@ -50,7 +50,7 @@ export class MockKYCProvider implements IKYCProvider {
     return result;
   }
 
-  async checkStatus(verificationId: string): Promise<KYCStatus> {
+  async checkStatus(_verificationId: string): Promise<KYCStatus> {
     // Mock status check
     await new Promise(resolve => setTimeout(resolve, 50));
     return KYCStatus.APPROVED;

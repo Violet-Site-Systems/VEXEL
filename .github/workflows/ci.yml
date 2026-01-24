@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    name: Test and Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests with coverage
+        run: npm run test:coverage
+
+      - name: Run integration tests
+        run: npm run test:integration
+
+      - name: Upload coverage to GitHub
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage/
+
+      - name: Build TypeScript
+        run: npm run build
+
+      - name: Run linting
+        run: npm run lint
+
+      - name: Run security audit
+        run: |
+          # Run npm audit and check for critical/high vulnerabilities (includes dev dependencies)
+          echo "Running security audit..."
+          npm audit --json > audit-results.json || true
+          
+          # Parse the audit results
+          CRITICAL=$(jq -r '.metadata.vulnerabilities.critical // 0' audit-results.json)
+          HIGH=$(jq -r '.metadata.vulnerabilities.high // 0' audit-results.json)
+          
+          echo "Critical vulnerabilities: $CRITICAL"
+          echo "High vulnerabilities: $HIGH"
+          
+          # Show audit summary
+          npm audit || true
+          
+          # Only fail on critical vulnerabilities (high can be reviewed)
+          if [ "$CRITICAL" -gt "0" ]; then
+            echo "::error::Found $CRITICAL critical severity vulnerabilities"
+            echo "Please run 'npm audit' locally and fix critical vulnerabilities before merging"
+            exit 1
+          fi
+          
+          if [ "$HIGH" -gt "0" ]; then
+            echo "::warning::Found $HIGH high severity vulnerabilities - please review"
+            echo "Run 'npm audit' locally to see details"
+          fi
+          
+          echo "✓ No critical severity vulnerabilities found"

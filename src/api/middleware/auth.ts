@@ -32,7 +32,7 @@ export class AuthMiddleware {
   verifyToken(token: string): JWTPayload | null {
     try {
       return jwt.verify(token, this.jwtSecret) as JWTPayload;
-    } catch (error) {
+    } catch {
       return null;
     }
   }

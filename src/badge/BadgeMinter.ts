@@ -18,6 +18,7 @@ export interface MintedBadge {
   tokenId: string;
   owner: string;
   transactionHash: string;
+  tokenURI: string;
   badgeType: string;
   timestamp: number;
 }
@@ -92,6 +93,7 @@ export class BadgeMinter {
       tokenId: simulatedTokenId,
       owner: address,
       transactionHash: simulatedTxHash,
+      tokenURI,
       badgeType: 'VERIFIED_HUMAN',
       timestamp: Date.now()
     };
