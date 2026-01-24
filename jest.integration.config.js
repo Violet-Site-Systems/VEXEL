@@ -5,7 +5,8 @@ module.exports = {
   // Only run integration tests
   testMatch: ['**/__tests__/integration/**/*.ts'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  globalTeardown: '<rootDir>/jest.globalTeardown.ts',
+  globalSetup: '<rootDir>/jest.integration.setup.ts',
+  globalTeardown: '<rootDir>/jest.integration.teardown.ts',
   collectCoverageFrom: [
     'src/**/*.ts',
     '!src/**/*.d.ts',
@@ -16,5 +17,7 @@ module.exports = {
     'node_modules/(?!(uuid)/)'
   ],
   // Longer timeout for integration tests
-  testTimeout: 30000
+  testTimeout: 30000,
+  // Run tests serially to avoid database conflicts
+  maxWorkers: 1
 };

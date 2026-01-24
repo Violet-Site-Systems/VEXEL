@@ -1,0 +1,100 @@
+name: Integration Tests
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  integration-tests:
+    name: Database Integration Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: vexel_test
+          POSTGRES_USER: vexel_test_user
+          POSTGRES_PASSWORD: vexel_test_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_HOST: localhost
+      DATABASE_PORT: 5432
+      DATABASE_NAME: vexel_test
+      DATABASE_USER: vexel_test_user
+      DATABASE_PASSWORD: vexel_test_password
+      NODE_ENV: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Wait for PostgreSQL
+        run: |
+          echo "Waiting for PostgreSQL to be ready..."
+          for i in {1..30}; do
+            if pg_isready -h localhost -p 5432 -U vexel_test_user; then
+              echo "PostgreSQL is ready!"
+              break
+            fi
+            echo "Attempt $i: PostgreSQL not ready yet..."
+            sleep 2
+          done
+
+      - name: Verify database connection
+        run: |
+          PGPASSWORD=vexel_test_password psql -h localhost -p 5432 -U vexel_test_user -d vexel_test -c "SELECT version();"
+
+      - name: Initialize database schema
+        run: |
+          echo "Running database migrations..."
+          PGPASSWORD=vexel_test_password psql -h localhost -p 5432 -U vexel_test_user -d vexel_test -f database/schema.sql
+          echo "Database schema initialized successfully"
+
+      - name: Verify database schema
+        run: |
+          echo "Verifying database tables..."
+          PGPASSWORD=vexel_test_password psql -h localhost -p 5432 -U vexel_test_user -d vexel_test -c "\dt"
+          PGPASSWORD=vexel_test_password psql -h localhost -p 5432 -U vexel_test_user -d vexel_test -c "\dT"
+
+      - name: Build TypeScript
+        run: npm run build
+
+      - name: Run integration tests
+        run: npm run test:integration
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: integration-test-results
+          path: |
+            coverage/
+            test-results/
+
+      - name: Database cleanup check
+        if: always()
+        run: |
+          echo "Checking database state after tests..."
+          PGPASSWORD=vexel_test_password psql -h localhost -p 5432 -U vexel_test_user -d vexel_test -c "SELECT COUNT(*) as agent_count FROM agents;"

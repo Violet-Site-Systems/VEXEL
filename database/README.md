@@ -261,6 +261,41 @@ The schema enforces data integrity through:
 3. Consider point-in-time recovery (PITR) for critical data
 4. Store backups in geographically separate locations
 
+## Testing
+
+### Integration Tests
+
+For integration testing with PostgreSQL, VEXEL provides:
+
+1. **Test Data Seeding** (`src/database/test-seeder.ts`)
+   - Helper utilities for creating test data
+   - Clean database state between tests
+   - Type-safe test data creation
+
+2. **Automated Setup/Teardown**
+   - Automatic schema initialization
+   - Database cleanup after tests
+   - Connection management
+
+3. **CI/CD Integration**
+   - GitHub Actions workflow with PostgreSQL service
+   - Automated database health checks
+   - Test isolation with serial execution
+
+See [Integration Testing Guide](../docs/INTEGRATION_TESTING.md) for detailed setup instructions.
+
+### Quick Test Setup
+
+```bash
+# Create test database
+createdb vexel_test
+psql -c "CREATE USER vexel_test_user WITH PASSWORD 'vexel_test_password';"
+psql -c "GRANT ALL PRIVILEGES ON DATABASE vexel_test TO vexel_test_user;"
+
+# Run integration tests
+npm run test:integration
+```
+
 ## Monitoring
 
 Monitor the following metrics:
