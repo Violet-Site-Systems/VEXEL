@@ -19,7 +19,7 @@ export interface TestAgent {
 export interface TestCapability {
   agent_id: string;
   capability_name: string;
-  capability_value: any;
+  capability_value: Record<string, any>;
   version?: number;
 }
 
@@ -95,8 +95,11 @@ export class TestDataSeeder {
    * Create a test agent with default values
    */
   async createTestAgent(overrides?: Partial<TestAgent>): Promise<any> {
+    // Generate unique DID with UUID to prevent collisions
+    const uniqueId = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
+    
     const defaultAgent: TestAgent = {
-      did: `did:vexel:test:${Date.now()}`,
+      did: `did:vexel:test:${uniqueId}`,
       name: 'Test Agent',
       description: 'A test agent for integration testing',
       owner_address: '0x1234567890123456789012345678901234567890',

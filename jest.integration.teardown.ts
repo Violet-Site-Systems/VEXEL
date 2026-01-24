@@ -6,6 +6,9 @@
 import { DatabaseClient } from './src/database/client';
 import { MigrationRunner } from './src/database/migrate';
 
+// Teardown grace period to allow async operations to complete
+const TEARDOWN_GRACE_PERIOD_MS = 2000;
+
 /**
  * Global teardown - runs once after all tests complete
  */
@@ -42,7 +45,7 @@ export default async function teardown() {
   }
 
   // Wait for any pending async operations
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  await new Promise(resolve => setTimeout(resolve, TEARDOWN_GRACE_PERIOD_MS));
   
   // Force garbage collection if available
   if (global.gc) {

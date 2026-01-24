@@ -10,6 +10,9 @@ import * as dotenv from 'dotenv';
 // Load environment variables
 dotenv.config();
 
+// Allowed test database names for safety
+const ALLOWED_TEST_DB_NAMES = ['vexel_test', 'vexel_test_ci', 'test_vexel'];
+
 // Global database client for setup/teardown
 let globalDb: DatabaseClient;
 
@@ -19,11 +22,24 @@ let globalDb: DatabaseClient;
 export default async function setup() {
   console.log('=== Integration Test Setup ===');
   
-  // Ensure we're using test database
+  // Ensure we're using test database and test environment
   const dbName = process.env.DATABASE_NAME;
-  if (!dbName?.includes('test')) {
-    console.warn(`⚠️  Warning: DATABASE_NAME is "${dbName}" - should include "test"`);
+  const nodeEnv = process.env.NODE_ENV;
+  
+  // Strict validation to prevent accidental production database usage
+  if (!dbName || !ALLOWED_TEST_DB_NAMES.includes(dbName)) {
+    throw new Error(
+      `Invalid test database name: "${dbName}". ` +
+      `Must be one of: ${ALLOWED_TEST_DB_NAMES.join(', ')}. ` +
+      `Set DATABASE_NAME environment variable.`
+    );
   }
+  
+  if (nodeEnv !== 'test') {
+    console.warn(`⚠️  Warning: NODE_ENV is "${nodeEnv}" but should be "test"`);
+  }
+
+  console.log(`✓ Using test database: ${dbName}`);
 
   // Create database client
   globalDb = new DatabaseClient();
