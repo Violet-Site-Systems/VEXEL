@@ -4,6 +4,7 @@ module.exports = {
   roots: ['<rootDir>/src'],
   testMatch: ['**/__tests__/**/*.ts', '**/?(*.)+(spec|test).ts'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  globalTeardown: '<rootDir>/jest.globalTeardown.ts',
   // Exclude integration tests
   testPathIgnorePatterns: [
     '/node_modules/',

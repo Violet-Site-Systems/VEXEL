@@ -384,15 +384,16 @@ export class HandshakeProtocol extends EventEmitter {
   }
 
   private cleanupSession(sessionId: string): void {
+    // Always clear any existing timer for this session to avoid leaks
+    const timer = this.sessionTimers.get(sessionId);
+    if (timer) {
+      clearTimeout(timer);
+      this.sessionTimers.delete(sessionId);
+    }
+
     const session = this.sessions.get(sessionId);
     if (session && session.expiresAt <= new Date()) {
       this.sessions.delete(sessionId);
-      // Clear the timer if it exists
-      const timer = this.sessionTimers.get(sessionId);
-      if (timer) {
-        clearTimeout(timer);
-        this.sessionTimers.delete(sessionId);
-      }
       console.log(`Session expired: ${sessionId}`);
     }
   }
@@ -402,7 +403,7 @@ export class HandshakeProtocol extends EventEmitter {
    */
   shutdown(): void {
     // Clear all session timers
-    for (const [sessionId, timer] of this.sessionTimers.entries()) {
+    for (const timer of this.sessionTimers.values()) {
       clearTimeout(timer);
     }
     this.sessionTimers.clear();
