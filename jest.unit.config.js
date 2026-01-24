@@ -25,5 +25,7 @@ module.exports = {
   },
   transformIgnorePatterns: [
     'node_modules/(?!(uuid)/)'
-  ]
+  ],
+  // Force exit after tests complete to avoid hanging workers
+  forceExit: true
 };

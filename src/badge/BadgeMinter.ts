@@ -18,6 +18,7 @@ export interface MintedBadge {
   tokenId: string;
   owner: string;
   transactionHash: string;
+  tokenURI: string;
   badgeType: string;
   timestamp: number;
 }
@@ -81,7 +82,7 @@ export class BadgeMinter {
     };
 
     const badgeMetadata = { ...defaultMetadata, ...metadata };
-    const _tokenURI = this.createTokenURI(badgeMetadata);
+    const tokenURI = this.createTokenURI(badgeMetadata);
 
     // In a real implementation, this would interact with a deployed smart contract
     // For now, we simulate the minting process
@@ -92,6 +93,7 @@ export class BadgeMinter {
       tokenId: simulatedTokenId,
       owner: address,
       transactionHash: simulatedTxHash,
+      tokenURI,
       badgeType: 'VERIFIED_HUMAN',
       timestamp: Date.now()
     };

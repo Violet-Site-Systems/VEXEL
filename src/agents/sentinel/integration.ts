@@ -37,7 +37,7 @@ export function createSentinelMiddleware(agent: SentinelAgent) {
 
         const _token = authHeader.substring(7);
         // Token verification would be done here with agent.verify()
-        (req as any).user = { userId: 'verified-user', role: 'agent' };
+        req.user = { userId: 'verified-user', role: 'agent' };
         next();
       } catch {
         res.status(401).json({ error: 'Invalid signature' });

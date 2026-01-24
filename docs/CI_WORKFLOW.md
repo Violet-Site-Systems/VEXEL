@@ -20,7 +20,7 @@ This ensures that all code changes are validated before merging.
 
 ### 1. Setup
 - **Checkout Code**: Uses `actions/checkout@v4` to fetch the repository
-- **Setup Node.js**: Uses `actions/setup-node@v4` to install Node.js 18.x
+- **Setup Node.js**: Uses `actions/setup-node@v4` to install Node.js 18.18+
 - **Cache Dependencies**: Automatically caches npm dependencies for faster builds
 
 ### 2. Install Dependencies
@@ -29,14 +29,15 @@ npm ci
 ```
 Uses `npm ci` for clean, reproducible installs based on `package-lock.json`.
 
-### 3. Unit Tests
+### 3. Unit Tests with Coverage
 ```bash
-npm test
+npm run test:coverage
 ```
-Runs all unit tests using Jest with the `jest.unit.config.js` configuration.
+Runs all unit tests with coverage using Jest with the `jest.unit.config.js` configuration.
 - Excludes integration tests
 - Tests: 234+ unit tests
 - Coverage thresholds: 80% for branches, functions, lines, and statements
+- Generates coverage reports in a single pass (no duplicate test execution)
 
 ### 4. Integration Tests
 ```bash
@@ -46,13 +47,11 @@ Runs integration tests using Jest with the `jest.integration.config.js` configur
 - Longer timeout (30 seconds)
 - Tests integration between components
 
-### 5. Coverage Report
-```bash
-npm run test:coverage
-```
-Generates test coverage reports and uploads them as GitHub artifacts.
+### 5. Coverage Report Upload
+Uploads test coverage reports as GitHub artifacts.
 - Coverage data is available in the Actions tab after each run
 - Artifact name: `coverage-report`
+- Generated during unit test step (no duplicate execution)
 
 ### 6. TypeScript Build
 ```bash
@@ -77,7 +76,7 @@ Runs ESLint on all TypeScript source files.
 ```bash
 npm audit
 ```
-Scans dependencies for known security vulnerabilities.
+Scans dependencies for known security vulnerabilities (includes all dependencies, both production and dev).
 - **Fails** if any critical severity vulnerabilities are found
 - **Warns** if any high severity vulnerabilities are found (requires review)
 - **Passes** with low or moderate vulnerabilities (should be reviewed)
@@ -96,7 +95,7 @@ Scans dependencies for known security vulnerabilities.
 
 Typical run times:
 - Dependency installation: ~1-2 minutes (with cache)
-- Tests: ~2-3 minutes
+- Tests (unit + integration): ~2-3 minutes
 - Build: ~30 seconds
 - Linting: ~30 seconds
 - Security audit: ~10 seconds
