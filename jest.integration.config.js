@@ -4,6 +4,7 @@ module.exports = {
   roots: ['<rootDir>/src'],
   // Only run integration tests
   testMatch: ['**/__tests__/integration/**/*.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   collectCoverageFrom: [
     'src/**/*.ts',
     '!src/**/*.d.ts',

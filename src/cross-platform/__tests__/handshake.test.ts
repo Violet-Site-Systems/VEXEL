@@ -35,6 +35,11 @@ describe('HandshakeProtocol', () => {
     handshakeProtocol.shutdown();
   });
 
+  afterAll(async () => {
+    // Clean up wallet manager provider
+    await walletManager.destroy();
+  });
+
   describe('initiateHandshake', () => {
     it('should create handshake request', async () => {
       const request = await handshakeProtocol.initiateHandshake(
@@ -52,19 +57,23 @@ describe('HandshakeProtocol', () => {
       expect(request.metadata?.purpose).toBe('collaboration');
     });
 
-    it('should emit handshake initiation event', (done) => {
-      handshakeProtocol.on(CrossPlatformEvent.HANDSHAKE_INITIATED, (data) => {
-        expect(data.event).toBe(CrossPlatformEvent.HANDSHAKE_INITIATED);
-        expect(data.data.initiatorAgentId).toBe('agent-initiator');
-        expect(data.data.targetAgentId).toBe('agent-target');
-        done();
+    it('should emit handshake initiation event', async () => {
+      const eventPromise = new Promise((resolve) => {
+        handshakeProtocol.on(CrossPlatformEvent.HANDSHAKE_INITIATED, (data) => {
+          expect(data.event).toBe(CrossPlatformEvent.HANDSHAKE_INITIATED);
+          expect(data.data.initiatorAgentId).toBe('agent-initiator');
+          expect(data.data.targetAgentId).toBe('agent-target');
+          resolve(true);
+        });
       });
 
-      handshakeProtocol.initiateHandshake(
+      await handshakeProtocol.initiateHandshake(
         'agent-initiator',
         'agent-target',
         'did:vexel:0x123'
       );
+
+      await eventPromise;
     });
 
     it('should fail with non-existent wallet', async () => {
@@ -95,20 +104,23 @@ describe('HandshakeProtocol', () => {
       expect(response.targetDid).toBeDefined();
     });
 
-    it('should emit handshake completion event', (done) => {
-      handshakeProtocol.on(CrossPlatformEvent.HANDSHAKE_COMPLETED, (data) => {
-        expect(data.event).toBe(CrossPlatformEvent.HANDSHAKE_COMPLETED);
-        expect(data.data.sessionId).toBeDefined();
-        done();
+    it('should emit handshake completion event', async () => {
+      const eventPromise = new Promise((resolve) => {
+        handshakeProtocol.on(CrossPlatformEvent.HANDSHAKE_COMPLETED, (data) => {
+          expect(data.event).toBe(CrossPlatformEvent.HANDSHAKE_COMPLETED);
+          expect(data.data.sessionId).toBeDefined();
+          resolve(true);
+        });
       });
 
-      handshakeProtocol.initiateHandshake(
+      const request = await handshakeProtocol.initiateHandshake(
         'agent-initiator',
         'agent-target',
         'did:vexel:0x123'
-      ).then(request => {
-        handshakeProtocol.processHandshakeRequest(request);
-      });
+      );
+      await handshakeProtocol.processHandshakeRequest(request);
+
+      await eventPromise;
     });
 
     it('should reject expired handshake request', async () => {

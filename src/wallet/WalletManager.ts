@@ -176,4 +176,14 @@ export class WalletManager {
   getProvider(): ethers.JsonRpcProvider {
     return this.provider;
   }
+
+  /**
+   * Cleanup and destroy the provider
+   * This is important to prevent open handles in tests
+   */
+  async destroy(): Promise<void> {
+    if (this.provider) {
+      await this.provider.destroy();
+    }
+  }
 }
