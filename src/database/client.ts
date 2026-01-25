@@ -21,14 +21,10 @@ export class DatabaseClient {
       connectionTimeoutMillis: 2000,
     };
 
-    this.pool = new Pool(config || defaultConfig);
-
-    // Handle pool errors
-    this.pool.on('error', (err) => {
-      console.error('Unexpected database error:', err);
-    });
-  }
-
+   // Handle pool errors
+this.pool.on('error', (err: Error) => {
+  console.error('Unexpected database error:', err);
+});
   /**
    * Execute a query
    */
