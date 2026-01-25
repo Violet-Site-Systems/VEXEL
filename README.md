@@ -195,11 +195,17 @@ npx ts-node examples/haap-example.ts
 ## 🧪 Testing
 
 ```bash
-# Run all tests
+# Run unit tests
 npm test
 
 # Run with coverage
 npm run test:coverage
+
+# Run integration tests (requires PostgreSQL)
+npm run test:integration
+
+# Run all tests
+npm run test:all
 
 # Run HAAP-specific tests
 npm test -- src/haap
@@ -208,6 +214,10 @@ npm test -- src/haap
 **Test Results:** 234 tests passing ✅  
 **Coverage:** High coverage across all modules  
 **Framework:** Jest 29.7.0 + ts-jest 29.4.6 (officially compatible versions)
+
+**Integration Testing:**
+- See [Integration Testing Guide](./docs/INTEGRATION_TESTING.md) for database integration testing setup
+- See [Quick Reference](./docs/INTEGRATION_TESTING_QUICKREF.md) for common commands and troubleshooting
 
 ## 📦 Project Structure
 

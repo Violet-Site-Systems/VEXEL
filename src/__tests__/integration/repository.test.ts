@@ -1,17 +1,27 @@
 import { DatabaseClient } from '../../database/client';
 import { AgentRepository } from '../../database/repository';
+import { TestDataSeeder } from '../../database/test-seeder';
 import { RuntimeStatus } from '../../types';
 
 describe('AgentRepository', () => {
   let db: DatabaseClient;
   let repository: AgentRepository;
+  let seeder: TestDataSeeder;
 
   beforeAll(() => {
     db = new DatabaseClient();
     repository = new AgentRepository(db);
+    seeder = new TestDataSeeder(db);
+  });
+
+  beforeEach(async () => {
+    // Clean database before each test to ensure isolation
+    await seeder.cleanAll();
   });
 
   afterAll(async () => {
+    // Final cleanup
+    await seeder.cleanAll();
     await db.close();
   });
 
