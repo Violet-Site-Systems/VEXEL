@@ -35,7 +35,8 @@ export class TestDataSeeder {
    */
   async cleanAll(): Promise<void> {
     // Use TRUNCATE with CASCADE to efficiently clear agents and all dependent tables
-    await this.db.query('TRUNCATE TABLE agents RESTART IDENTITY CASCADE');
+    // Note: RESTART IDENTITY omitted as all tables use UUID PKs, not sequences
+    await this.db.query('TRUNCATE TABLE agents CASCADE');
   }
 
   /**
