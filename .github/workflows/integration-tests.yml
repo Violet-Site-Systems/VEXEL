@@ -1,0 +1,73 @@
+name: Integration Tests
+
+on:
+  push:
+    branches: [ main, develop, 'feature/**' ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: vexel_user
+          POSTGRES_PASSWORD: vexel_test_password
+          POSTGRES_DB: vexel_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    env:
+      DATABASE_HOST: localhost
+      DATABASE_PORT: 5432
+      DATABASE_NAME: vexel_test
+      DATABASE_USER: vexel_user
+      DATABASE_PASSWORD: vexel_test_password
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Initialize database schema
+        run: |
+          # Install PostgreSQL client
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+          
+          # Wait for PostgreSQL to be ready
+          until pg_isready -h localhost -p 5432 -U vexel_user; do
+            echo "Waiting for PostgreSQL to be ready..."
+            sleep 2
+          done
+          
+          # Run schema initialization
+          PGPASSWORD=vexel_test_password psql -h localhost -p 5432 -U vexel_user -d vexel_test -f database/schema.sql
+
+      - name: Run integration tests
+        run: npm run test:integration
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-results
+          path: |
+            coverage/
+            test-results/

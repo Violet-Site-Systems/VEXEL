@@ -1,4 +1,5 @@
-import { Pool, PoolConfig, QueryResult } from 'pg';
+import { Pool, PoolConfig } from 'pg';
+import type { QueryResult } from 'pg';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -21,10 +22,14 @@ export class DatabaseClient {
       connectionTimeoutMillis: 2000,
     };
 
-   // Handle pool errors
-this.pool.on('error', (err: Error) => {
-  console.error('Unexpected database error:', err);
-});
+    this.pool = new Pool({ ...defaultConfig, ...config });
+
+    // Handle pool errors
+    this.pool.on('error', (err: Error) => {
+      console.error('Unexpected database error:', err);
+    });
+  }
+
   /**
    * Execute a query
    */
