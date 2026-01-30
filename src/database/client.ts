@@ -1,4 +1,4 @@
-import { Pool, PoolConfig, QueryResult } from 'pg';
+import { Pool, PoolConfig } from 'pg';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -21,10 +21,10 @@ export class DatabaseClient {
       connectionTimeoutMillis: 2000,
     };
 
-    this.pool = new Pool(config || defaultConfig);
+    this.pool = new Pool({ ...defaultConfig, ...config });
 
     // Handle pool errors
-    this.pool.on('error', (err) => {
+    this.pool.on('error', (err: Error) => {
       console.error('Unexpected database error:', err);
     });
   }
@@ -32,7 +32,7 @@ export class DatabaseClient {
   /**
    * Execute a query
    */
-  async query<T extends Record<string, any> = any>(text: string, params?: any[]): Promise<QueryResult<T>> {
+  async query<T extends Record<string, any> = any>(text: string, params?: any[]) {
     const start = Date.now();
     try {
       const result = await this.pool.query<T>(text, params);
