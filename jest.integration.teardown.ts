@@ -8,8 +8,11 @@ import { MigrationRunner } from './src/database/migrate';
 
 // Teardown grace period to allow async operations to complete
 // Can be configured via TEARDOWN_GRACE_PERIOD_MS environment variable
-const TEARDOWN_GRACE_PERIOD_MS = process.env.TEARDOWN_GRACE_PERIOD_MS 
+const parsedGracePeriod = process.env.TEARDOWN_GRACE_PERIOD_MS 
   ? parseInt(process.env.TEARDOWN_GRACE_PERIOD_MS, 10) 
+  : 2000;
+const TEARDOWN_GRACE_PERIOD_MS = !isNaN(parsedGracePeriod) && parsedGracePeriod > 0 
+  ? parsedGracePeriod 
   : 2000;
 
 /**
