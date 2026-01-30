@@ -15,7 +15,12 @@ export default async function globalSetup() {
     
     if (!isConnected) {
       console.error('❌ Failed to connect to the database');
-      console.error('Make sure PostgreSQL is running and DATABASE_* environment variables are set');
+      console.error('Required environment variables:');
+      console.error('  - DATABASE_HOST (default: localhost)');
+      console.error('  - DATABASE_PORT (default: 5432)');
+      console.error('  - DATABASE_NAME (default: vexel)');
+      console.error('  - DATABASE_USER (default: vexel_user)');
+      console.error('  - DATABASE_PASSWORD (required)');
       throw new Error('Database connection failed');
     }
 

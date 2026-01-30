@@ -4,7 +4,7 @@
  */
 
 import { DatabaseClient } from './client';
-import { RuntimeStatus } from '../types';
+import { RuntimeStatus, Agent, CapabilityVector } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
 export interface TestAgentOptions {
@@ -21,7 +21,7 @@ export class TestDataSeeder {
   /**
    * Create a test agent with default or custom properties
    */
-  async createTestAgent(options: TestAgentOptions = {}): Promise<any> {
+  async createTestAgent(options: TestAgentOptions = {}): Promise<Agent> {
     const defaultAgent = {
       did: `did:vexel:test:${uuidv4()}`,
       name: `Test Agent ${Date.now()}`,
@@ -45,8 +45,8 @@ export class TestDataSeeder {
   /**
    * Create multiple test agents
    */
-  async createTestAgents(count: number, options: TestAgentOptions = {}): Promise<any[]> {
-    const agents: any[] = [];
+  async createTestAgents(count: number, options: TestAgentOptions = {}): Promise<Agent[]> {
+    const agents: Agent[] = [];
     for (let i = 0; i < count; i++) {
       const agent = await this.createTestAgent({
         ...options,
@@ -59,13 +59,16 @@ export class TestDataSeeder {
 
   /**
    * Clean all test data from agents table
+   * Wraps all delete operations in a transaction for atomicity
    */
   async cleanAll(): Promise<void> {
-    // Delete in correct order due to foreign key constraints
-    await this.db.query('DELETE FROM agent_status_history');
-    await this.db.query('DELETE FROM capability_vectors');
-    await this.db.query('DELETE FROM ipfs_metadata');
-    await this.db.query('DELETE FROM agents');
+    await this.db.transaction(async (client) => {
+      // Delete in correct order due to foreign key constraints
+      await client.query('DELETE FROM agent_status_history');
+      await client.query('DELETE FROM capability_vectors');
+      await client.query('DELETE FROM ipfs_metadata');
+      await client.query('DELETE FROM agents');
+    });
   }
 
   /**
@@ -93,7 +96,7 @@ export class TestDataSeeder {
   /**
    * Get agent by DID
    */
-  async getAgentByDid(did: string): Promise<any | null> {
+  async getAgentByDid(did: string): Promise<Agent | null> {
     const result = await this.db.query('SELECT * FROM agents WHERE did = $1', [did]);
     return result.rows[0] || null;
   }
@@ -101,7 +104,7 @@ export class TestDataSeeder {
   /**
    * Create a test capability vector for an agent
    */
-  async createTestCapability(agentId: string, name: string, value: Record<string, any> = {}): Promise<any> {
+  async createTestCapability(agentId: string, name: string, value: Record<string, any> = {}): Promise<CapabilityVector> {
     const result = await this.db.query(
       `INSERT INTO capability_vectors (agent_id, capability_name, capability_value, version)
        VALUES ($1, $2, $3, 1)

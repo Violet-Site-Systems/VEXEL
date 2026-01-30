@@ -1,4 +1,4 @@
-import { Pool, PoolConfig } from 'pg';
+import { Pool, PoolConfig, PoolClient } from 'pg';
 import type { QueryResult } from 'pg';
 import * as dotenv from 'dotenv';
 
@@ -49,7 +49,7 @@ export class DatabaseClient {
   /**
    * Execute a transaction
    */
-  async transaction<T>(callback: (client: any) => Promise<T>): Promise<T> {
+  async transaction<T>(callback: (client: PoolClient) => Promise<T>): Promise<T> {
     const client = await this.pool.connect();
     try {
       await client.query('BEGIN');
