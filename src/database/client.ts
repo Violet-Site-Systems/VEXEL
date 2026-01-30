@@ -1,4 +1,5 @@
 import { Pool, PoolConfig } from 'pg';
+import type { QueryResult } from 'pg';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -32,7 +33,7 @@ export class DatabaseClient {
   /**
    * Execute a query
    */
-  async query<T extends Record<string, any> = any>(text: string, params?: any[]) {
+  async query<T extends Record<string, any> = any>(text: string, params?: any[]): Promise<QueryResult<T>> {
     const start = Date.now();
     try {
       const result = await this.pool.query<T>(text, params);
