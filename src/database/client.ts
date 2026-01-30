@@ -24,7 +24,7 @@ export class DatabaseClient {
 
     this.pool = new Pool({ ...defaultConfig, ...config });
 
-    // Handle pool errors
+    // Handle pool errors (prevent unhandled rejections)
     this.pool.on('error', (err: Error) => {
       console.error('Unexpected database error:', err);
     });
@@ -82,6 +82,8 @@ export class DatabaseClient {
    * Close all connections
    */
   async close(): Promise<void> {
+    // Remove all event listeners before closing
+    this.pool.removeAllListeners();
     await this.pool.end();
     console.log('Database connections closed');
   }
