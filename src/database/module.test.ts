@@ -5,6 +5,16 @@ import { DatabaseClient } from './client';
 import { AgentRepository } from './repository';
 
 describe('Database Module', () => {
+  let testClient: DatabaseClient | null = null;
+
+  afterAll(async () => {
+    // Close any test client that was created
+    if (testClient) {
+      await testClient.close();
+      testClient = null;
+    }
+  });
+
   describe('DatabaseClient', () => {
     it('should be instantiable', () => {
       const client = new DatabaseClient({
@@ -14,6 +24,7 @@ describe('Database Module', () => {
         user: 'test',
         password: 'test'
       });
+      testClient = client;
       expect(client).toBeInstanceOf(DatabaseClient);
     });
 
@@ -30,6 +41,7 @@ describe('Database Module', () => {
   describe('AgentRepository', () => {
     it('should be instantiable with DatabaseClient', () => {
       const client = new DatabaseClient();
+      testClient = client;
       const repo = new AgentRepository(client);
       expect(repo).toBeInstanceOf(AgentRepository);
     });
