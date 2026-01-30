@@ -73,8 +73,13 @@ export default async function setup() {
     console.log('✓ Database schema initialized');
   } catch (error) {
     console.error('✗ Migration failed:', error);
+    await globalDb.close();
     throw error;
   }
+
+  // Close the setup connection to prevent handle leaks
+  await globalDb.close();
+  console.log('✓ Setup database connection closed');
 
   console.log('=== Integration Test Setup Complete ===\n');
 }

@@ -31,12 +31,11 @@ export class TestDataSeeder {
 
   /**
    * Clean all test data from the database
+   * Uses TRUNCATE CASCADE for efficient cleanup
    */
   async cleanAll(): Promise<void> {
-    await this.db.query('DELETE FROM capability_vectors');
-    await this.db.query('DELETE FROM agent_status_history');
-    await this.db.query('DELETE FROM ipfs_metadata');
-    await this.db.query('DELETE FROM agents');
+    // Use TRUNCATE with CASCADE to efficiently clear agents and all dependent tables
+    await this.db.query('TRUNCATE TABLE agents RESTART IDENTITY CASCADE');
   }
 
   /**
@@ -95,7 +94,7 @@ export class TestDataSeeder {
    * Create a test agent with default values
    */
   async createTestAgent(overrides?: Partial<TestAgent>): Promise<any> {
-    // Generate unique DID with UUID to prevent collisions
+    // Generate unique DID with timestamp and random string to prevent collisions
     const uniqueId = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
     
     const defaultAgent: TestAgent = {

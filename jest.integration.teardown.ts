@@ -7,7 +7,10 @@ import { DatabaseClient } from './src/database/client';
 import { MigrationRunner } from './src/database/migrate';
 
 // Teardown grace period to allow async operations to complete
-const TEARDOWN_GRACE_PERIOD_MS = 2000;
+// Can be configured via TEARDOWN_GRACE_PERIOD_MS environment variable
+const TEARDOWN_GRACE_PERIOD_MS = process.env.TEARDOWN_GRACE_PERIOD_MS 
+  ? parseInt(process.env.TEARDOWN_GRACE_PERIOD_MS, 10) 
+  : 2000;
 
 /**
  * Global teardown - runs once after all tests complete
