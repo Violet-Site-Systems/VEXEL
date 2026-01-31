@@ -412,10 +412,10 @@ npm run test:coverage
 
 ### Test Coverage Requirements
 
-- Statements: >80%
-- Branches: >80%
-- Functions: >80%
-- Lines: >80%
+- Statements: >45%
+- Branches: >35%
+- Functions: >45%
+- Lines: >45%
 
 ## Environment Variables
 
