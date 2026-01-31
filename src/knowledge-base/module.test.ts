@@ -8,6 +8,16 @@ import { DatabaseClient } from '../database/client';
 import { AgentRepository } from '../database/repository';
 
 describe('Knowledge Base Module', () => {
+  let testClient: DatabaseClient | null = null;
+
+  afterAll(async () => {
+    // Close any test client that was created
+    if (testClient) {
+      await testClient.close();
+      testClient = null;
+    }
+  });
+
   describe('ArweaveClient', () => {
     it('should be instantiable', () => {
       const client = new ArweaveClient();
@@ -27,6 +37,7 @@ describe('Knowledge Base Module', () => {
   describe('MemoryExtractor', () => {
     it('should be instantiable', () => {
       const db = new DatabaseClient();
+      testClient = db;
       const repo = new AgentRepository(db);
       const extractor = new MemoryExtractor(db, repo);
       expect(extractor).toBeInstanceOf(MemoryExtractor);
@@ -34,6 +45,7 @@ describe('Knowledge Base Module', () => {
 
     it('should have required methods', () => {
       const db = new DatabaseClient();
+      testClient = db;
       const repo = new AgentRepository(db);
       const extractor = new MemoryExtractor(db, repo);
       expect(typeof extractor.extractAgentMemories).toBe('function');
@@ -46,12 +58,14 @@ describe('Knowledge Base Module', () => {
   describe('KnowledgeBaseMigration', () => {
     it('should be instantiable', () => {
       const db = new DatabaseClient();
+      testClient = db;
       const migration = new KnowledgeBaseMigration(db);
       expect(migration).toBeInstanceOf(KnowledgeBaseMigration);
     });
 
     it('should have required methods', () => {
       const db = new DatabaseClient();
+      testClient = db;
       const migration = new KnowledgeBaseMigration(db);
       expect(typeof migration.prepareKnowledgeBase).toBe('function');
       expect(typeof migration.migrateToArweave).toBe('function');
@@ -62,6 +76,7 @@ describe('Knowledge Base Module', () => {
 
     it('should provide access to sub-components', () => {
       const db = new DatabaseClient();
+      testClient = db;
       const migration = new KnowledgeBaseMigration(db);
       expect(migration.getMemoryExtractor()).toBeInstanceOf(MemoryExtractor);
       expect(migration.getArweaveClient()).toBeInstanceOf(ArweaveClient);

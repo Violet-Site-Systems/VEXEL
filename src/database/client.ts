@@ -1,4 +1,5 @@
-import { Pool, PoolConfig, QueryResult } from 'pg';
+import { Pool, PoolConfig, PoolClient } from 'pg';
+import type { QueryResult } from 'pg';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -21,10 +22,14 @@ export class DatabaseClient {
       connectionTimeoutMillis: 2000,
     };
 
-   // Handle pool errors
-this.pool.on('error', (err: Error) => {
-  console.error('Unexpected database error:', err);
-});
+    this.pool = new Pool({ ...defaultConfig, ...config });
+
+    // Handle pool errors (prevent unhandled rejections)
+    this.pool.on('error', (err: Error) => {
+      console.error('Unexpected database error:', err);
+    });
+  }
+
   /**
    * Execute a query
    */
@@ -44,7 +49,7 @@ this.pool.on('error', (err: Error) => {
   /**
    * Execute a transaction
    */
-  async transaction<T>(callback: (client: any) => Promise<T>): Promise<T> {
+  async transaction<T>(callback: (client: PoolClient) => Promise<T>): Promise<T> {
     const client = await this.pool.connect();
     try {
       await client.query('BEGIN');
@@ -77,6 +82,8 @@ this.pool.on('error', (err: Error) => {
    * Close all connections
    */
   async close(): Promise<void> {
+    // Remove all event listeners before closing
+    this.pool.removeAllListeners();
     await this.pool.end();
     console.log('Database connections closed');
   }

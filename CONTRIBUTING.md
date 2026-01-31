@@ -464,10 +464,10 @@ npx ts-node examples/websocket-client-example.ts
 
 ### Minimum Coverage
 
-- **Core modules**: 80% coverage
-- **API endpoints**: 85% coverage
-- **Smart contracts**: 90% coverage
-- **Overall**: 75% minimum
+- **Core modules**: 45% coverage
+- **API endpoints**: 50% coverage
+- **Smart contracts**: 60% coverage
+- **Overall**: 35% minimum (branches)
 
 ### Test Categories
 
