@@ -54,10 +54,18 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y postgresql-client
           
-          # Wait for PostgreSQL to be ready
+          # Wait for PostgreSQL to be ready with timeout
+          MAX_RETRIES=30          # total wait time = MAX_RETRIES * RETRY_INTERVAL (seconds)
+          RETRY_INTERVAL=2
+          ATTEMPT=1
           until pg_isready -h localhost -p 5432 -U vexel_user; do
-            echo "Waiting for PostgreSQL to be ready..."
-            sleep 2
+            if [ "$ATTEMPT" -ge "$MAX_RETRIES" ]; then
+              echo "PostgreSQL did not become ready after $((MAX_RETRIES * RETRY_INTERVAL)) seconds. Failing."
+              exit 1
+            fi
+            echo "Waiting for PostgreSQL to be ready... attempt $ATTEMPT/$MAX_RETRIES"
+            ATTEMPT=$((ATTEMPT + 1))
+            sleep "$RETRY_INTERVAL"
           done
           
           # Run schema initialization
