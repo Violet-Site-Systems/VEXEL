@@ -58,7 +58,8 @@ export class TestDataSeeder {
   }
 
   /**
-   * Clean all test data from agents table
+   * Clean all agent-related test data from all relevant tables
+   * Deletes from agent_status_history, capability_vectors, ipfs_metadata, and agents
    * Wraps all delete operations in a transaction for atomicity
    */
   async cleanAll(): Promise<void> {
