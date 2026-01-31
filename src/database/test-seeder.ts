@@ -60,16 +60,10 @@ export class TestDataSeeder {
   /**
    * Clean all agent-related test data from all relevant tables
    * Deletes from agent_status_history, capability_vectors, ipfs_metadata, and agents
-   * Wraps all delete operations in a transaction for atomicity
+   * Uses TRUNCATE with CASCADE for performance and to honor FK constraints
    */
   async cleanAll(): Promise<void> {
-    await this.db.transaction(async (client) => {
-      // Delete in correct order due to foreign key constraints
-      await client.query('DELETE FROM agent_status_history');
-      await client.query('DELETE FROM capability_vectors');
-      await client.query('DELETE FROM ipfs_metadata');
-      await client.query('DELETE FROM agents');
-    });
+    await this.db.query('TRUNCATE TABLE agents CASCADE');
   }
 
   /**
