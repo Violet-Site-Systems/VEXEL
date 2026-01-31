@@ -36,7 +36,7 @@ npm run test:coverage
 Runs all unit tests with coverage using Jest with the `jest.unit.config.js` configuration.
 - Excludes integration tests
 - Tests: 234+ unit tests
-- Coverage thresholds: 80% for branches, functions, lines, and statements
+- Coverage thresholds: 35% for branches, 45% for functions, lines, and statements
 - Generates coverage reports in a single pass (no duplicate test execution)
 
 ### 4. Integration Tests
@@ -271,7 +271,7 @@ When adding new tests:
 
 ### Code Quality
 
-✅ Maintain test coverage above 80%
+✅ Maintain test coverage above current thresholds (35% branches, 45% functions/lines/statements)
 ✅ Fix all linting errors
 ✅ Address security vulnerabilities
 ✅ Write meaningful test cases
